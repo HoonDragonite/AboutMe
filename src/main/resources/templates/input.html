@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">    
+    <link href="../static/css/style.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/input.css" rel="stylesheet" type="text/css">
+    <title>Input your Info</title>
+</head>
+<body>
+    <div class="container">
+        <!-- header -->
+        <header> 
+            <div class="header"> 
+                <div class="logo-area" id="logoArea">
+                    <div class="logo">About Me</div>
+                    <div class="sublogo">Make Your Portfolio.</div>
+                </div>
+            </div>
+        </header>
+        <!-- //header -->
+        <!-- nav -->
+        <nav>
+            <div class="nav">
+                <div class="nav-item">소개</div>
+                <div class="nav-item">개발자</div>
+            </div>
+        </nav>
+        <!-- //nav -->
+        <!-- aside-->
+        <aside>
+            <div class="aside"></div>
+        </aside>
+        <!-- //aside-->
+        <!-- section -->
+        <section> 
+            <div class="content">
+                <div class="title-area">
+                    <h1 class="title">당신의 정보를 입력하세요.</h1>
+                    <h2 class="subtitle">이 정보를 기반으로 포트폴리오가 생성됩니다.</h2>    
+                </div>
+                <div class="input-area">
+                    <div class= "input-column">
+                        <image class="image-user" id="userImage"></image>
+                        <span class="input-title">프로필 사진</span>
+                        <input class="input-file" accept="image/*" type="file" id="inputUserImage" />
+                        <label class="btn" name="uploadBtn" id="uploadBtn">올리기</label>
+                    </div>
+                    <div class="input-row">
+                        <span class="input-title">이름</span>
+                        <input id="name" class="input-desc" type="text" name="name">
+                    </div>
+                    <div class="input-row">
+                        <span class="input-title">연락처</span>
+                        <input id="phone" class="input-desc" type="text" name="phone">
+                    </div>
+                    <div class="input-row">
+                        <span class="input-title">이메일</span>
+                        <input id="email" class="input-desc" type="text" name="email">
+                    </div>
+                    <div class="input-row">
+                        <span class="input-title">기술</span>
+                        <input id="tech" class="input-desc-multi" type="text" name="tech">
+                        <button class="input-desc-submit" id="techBtn">+</button>
+                    </div>
+                    <ul class="input-list" id="techList">
+                    </ul>
+                    <div class="input-row">
+                        <span class="input-title">경력</span>
+                        <label for="pjt">경력Input</label><input id="pjt" class="input-desc-multi" type="text" name="project">
+                        <button class="input-desc-submit" id="pjtBtn">+</button>
+                    </div>
+                    <ul class="input-list" id="pjtList">
+                    </ul>
+                </div>
+                <button class="btn" id="submitBtn">양식 선택하기</button>
+            </div>
+        </section>
+        <!-- //section -->
+        <!-- footer -->
+        <footer>
+            <div class="footer">
+                <em>훈나뇽</em>
+            </div>
+        </footer>
+        <!-- //footer -->
+    </div>
+    <script src="../js/script.js"></script>
+    <script src="../js/input.js"></script>
+</body>
+</html>

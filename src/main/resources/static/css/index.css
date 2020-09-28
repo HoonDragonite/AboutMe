@@ -1,0 +1,33 @@
+/* About me CSS Style Start */
+.start-area{
+    padding-top: 20px;
+}
+.start-title{
+    text-align: center;
+    padding:40px;
+    font-size: 1.6rem;
+}
+.desc-area{
+    display: flex;
+    padding-top: 50px;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+.desc-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-basis: 44%;
+    width: 450px;
+    height: 450px;
+    max-width: 450px;
+    max-height: 450px;
+    min-width: 350px;
+    min-height: 350px;
+    margin: 50px;
+    background: aliceblue;
+    text-align: center;
+    border: 1px solid #000;
+}
+/* About me CSS Style End */
