@@ -4,12 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">    
-    <link href="../static/css/style.css" rel="stylesheet" type="text/css">
-    <link href="../static/css/index.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
+    <link href="../static/css/index.css" th:href="@{/css/index.css}" rel="stylesheet">
     <title>About Me</title>
 </head>
 <body>
-    <h1 th:text="'Hello' + ${test}"></h1>
     <div class="container">
         <!-- header -->
         <header> 
@@ -40,7 +39,9 @@
                 <div class="title-area">
                     <h1 class="title">1분 만에 만드는 나의 포트폴리오</h1>
                     <h2 class="subtitle">양식을 선택하고 생성합니다.</h2>    
-                    <button class="btn" id="startBtn">Get Start</button>
+                    <form action="select" method="get">
+                        <button class="btn" id="startBtn">Get Start</button>
+                    </form>
                 </div>
                 <div class="desc-area">
                     <div class="desc-item">소개글1</div>

@@ -7,5 +7,5 @@ function loadEvents(){
 
 function moveToStart(){
     console.log('hi');
-    location.href="html/input.html";
+    //location.href="html/input.html";
 }
