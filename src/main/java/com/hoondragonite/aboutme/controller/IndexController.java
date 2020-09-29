@@ -15,21 +15,17 @@ public class IndexController {
 
     @GetMapping("/")
     public String empty(Model model){
-        model.addAttribute("test", "empty SeungHoon");
-        System.out.println("Move to index");
         return "index";
     }
 
-    @RequestMapping(value = "/select", method = RequestMethod.GET)
+    @GetMapping(value = "/select")
     public String moveToSelect(ModelAndView modelAndView){
-        System.out.println("RequestMapping TEST : moveToselect, value = ./select");
+
         return "select";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/login")
     public String moveToLogin(ModelAndView modelAndView){
-
-        System.out.println("RequestMapping TEST : moveToLogin, value = ./login");
         return "login";
     }
 }

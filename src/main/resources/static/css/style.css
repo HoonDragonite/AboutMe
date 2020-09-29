@@ -64,6 +64,14 @@ table {
     justify-content: center;
     background: #393b44;
 }
+.back-form{
+    position: absolute;
+    left: 5px;
+}
+.back-btn{
+    background: #393b44;
+    color: #FFF;
+}
 .logo-area:hover{
     cursor: pointer;
 }

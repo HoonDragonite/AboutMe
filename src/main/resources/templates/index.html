@@ -38,13 +38,9 @@
             <div class="content">
                 <div class="title-area">
                     <h1 class="title">1분 만에 만드는 나의 포트폴리오</h1>
-                    <h2 class="subtitle">양식을 선택하고 생성합니다.</h2>    
-                    <form action="select" method="get">
-                        <button class="btn" id="startBtn">Get Start</button>
-                    </form>
-                    <form action="login" method="get">
-                        <button class="btn" id="loginBtn">login test</button>
-                    </form>
+                    <h2 class="subtitle">양식을 선택하고 생성합니다.</h2>
+                    <button class="btn" id="startBtn" th:href="@{/select}">Get Start</button>
+                    <button class="btn" id="loginBtn" th:href="@{/login}">Login test</button>
                 </div>
                 <div class="desc-area">
                     <div class="desc-item">소개글1</div>
