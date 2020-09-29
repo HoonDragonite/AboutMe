@@ -3,13 +3,14 @@ checkSessionValue();
 
 
 function loadEvents(){
+    console.log("loadEvents");
     var logoArea = document.getElementById('logoArea');
     logoArea.addEventListener('click', moveToHome);
-}
 
-function moveToHome(){
-    console.log('Move to Home');
-    location.href="/MyProjects/AboutMe/index.html";
+    var backBtn = document.getElementById("backBtn");
+    backBtn.addEventListener('click', function () {
+        history.back();
+    })
 }
 
 function checkSessionValue(){

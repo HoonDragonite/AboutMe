@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">    
-    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
-    <link href="../static/css/index.css" th:href="@{/css/index.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
     <title>About Me</title>
 </head>
 <body>
@@ -42,6 +42,9 @@
                     <form action="select" method="get">
                         <button class="btn" id="startBtn">Get Start</button>
                     </form>
+                    <form action="login" method="get">
+                        <button class="btn" id="loginBtn">login test</button>
+                    </form>
                 </div>
                 <div class="desc-area">
                     <div class="desc-item">소개글1</div>
@@ -60,7 +63,7 @@
         </footer>
         <!-- //footer -->
     </div>
-    <script src="../static/js/script.js"></script>
-    <script src="../static/js/index.js"></script>
+    <script th:href="@{/js/script.js}"></script>
+    <script th:href="@{/js/index.js}"></script>
 </body>
 </html>
