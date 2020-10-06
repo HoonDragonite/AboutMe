@@ -5,7 +5,9 @@ checkSessionValue();
 function loadEvents(){
     console.log("loadEvents");
     var logoArea = document.getElementById('logoArea');
-    logoArea.addEventListener('click', moveToHome);
+    logoArea.addEventListener('click', function (){
+        location.href = "./";
+    });
 
     var backBtn = document.getElementById("backBtn");
     backBtn.addEventListener('click', function () {

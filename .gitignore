@@ -32,3 +32,15 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# Google Services (ex. APIs and Firebase)
+google-services.json
+GoogleService-Info.plist
+
+# Firebase Hosting
+.firebaserc
+firebase-debug.log
+firebase-debug.*.log
+database.rules.json
+firebase.json
+storage.rules
