@@ -1,14 +1,15 @@
 loadEvents();
 
 function loadEvents(){
-    var startBtn = document.getElementById('startBtn');
+    const startBtn = document.getElementById('startBtn');
     startBtn.addEventListener('click', function () {
-        location.href = "./select";
+        console.log("Move To Template");
+        location.href = "./template";
     });
 
-    var loginBtn = document.getElementById('loginBtn');
+    const loginBtn = document.getElementById('loginBtn');
     loginBtn.addEventListener('click', function () {
+        console.log("Move To Login");
         location.href = "./login";
-        console.log("hihi");
     });
 }

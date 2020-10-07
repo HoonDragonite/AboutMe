@@ -18,11 +18,8 @@ public class IndexController {
         return "index";
     }
 
-    @GetMapping(value = "/select")
-    public String moveToSelect(ModelAndView modelAndView){
-
-        return "select";
-    }
+    @RequestMapping(value = "/template")
+    public String moveToSelect(ModelAndView modelAndView){ return "template";}
 
     @RequestMapping(value = "/login")
     public String moveToLogin(ModelAndView modelAndView){

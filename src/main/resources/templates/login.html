@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
-    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
-    <link href="../static/css/index.css" th:href="@{/css/login.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/login.css}" rel="stylesheet">
     <title>About Me|로그인</title>
 </head>
 <body>
@@ -13,9 +13,9 @@
     <!-- header -->
     <header>
         <div class="header">
-            <form class="back-form" action="back" method="get">
-                <button class="back-btn" id="test">Back</button>
-            </form>
+            <div class="back-area">
+                <button class="back-btn" id="backBtn">Back</button>
+            </div>
             <div class="logo-area" id="logoArea">
                 <div class="logo">About Me</div>
                 <div class="sublogo">Make Your Portfolio.</div>
@@ -45,6 +45,7 @@
     </footer>
     <!-- //footer -->
 </div>
-<script th:href="@{/js/script.js}"></script>
+<script th:src="@{/js/script.js}"></script>
+<script th:src="@{/js/login.js}"></script>
 </body>
 </html>

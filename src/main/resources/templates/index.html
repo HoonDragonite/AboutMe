@@ -39,8 +39,8 @@
                 <div class="title-area">
                     <h1 class="title">1분 만에 만드는 나의 포트폴리오</h1>
                     <h2 class="subtitle">양식을 선택하고 생성합니다.</h2>
-                    <button class="btn" id="startBtn" th:onclick="'window.location.href=\'./select\''">Get Start</button>
-                    <button class="btn" id="loginBtn" th:onclick="'window.location.href=\'./login\''">Login test</button>
+                    <button class="btn" id="startBtn">Get Start</button>
+                    <button class="btn" id="loginBtn">Login test</button>
                 </div>
                 <div class="desc-area">
                     <div class="desc-item">소개글1</div>
@@ -59,7 +59,7 @@
         </footer>
         <!-- //footer -->
     </div>
-    <script th:href="@{/js/script.js}"></script>
-    <script th:href="@{/js/index.js}"></script>
+    <script th:src="@{/js/script.js}"></script>
+    <script th:src="@{/js/index.js}"></script>
 </body>
 </html>

@@ -64,7 +64,8 @@ table {
     justify-content: center;
     background: #393b44;
 }
-.back-form{
+.back-area{
+    display: inline-block;
     position: absolute;
     left: 5px;
 }

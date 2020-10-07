@@ -64,36 +64,8 @@ function loadEvents(){
 
     /* 이벤트 등록 */
     var submitBtn = document.getElementById('submitBtn');
-    submitBtn.addEventListener('click', moveToSelect);
 }
 
-/* 세션에 값 담아서 양식 선택 화면으로 이동*/
-function moveToSelect(){
-    console.log('moveToSelect');
-
-    sessionStorage.clear();
-
-    var name = document.getElementById('name');
-    var phone = document.getElementById('phone');
-    var email = document.getElementById('email');
-    
-    sessionStorage.setItem("name", name.value);
-    sessionStorage.setItem("phone", phone.value);
-    sessionStorage.setItem("email".id, email.value);
-    sessionStorage.setItem("userImage", userImage.src);
-
-    sessionStorage.setItem("techList", JSON.stringify(techList.children));
-    sessionStorage.setItem("pjtList", JSON.stringify(pjtList.children));
-    
-    
-    var jsonTechList = JSON.parse(sessionStorage.getItem("techList"));
-    console.log(jsonTechList);
-    
-    var jsonPjtList = JSON.parse(sessionStorage.getItem("pjtList"));
-    console.log(jsonPjtList);
-    
-    //location.href="./select.html";
-}
 
 /* 업로드한 이미지 출력 */
 function uploadUserImage(){
