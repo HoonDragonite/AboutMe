@@ -3,21 +3,24 @@ checkSessionValue();
 
 
 function loadEvents(){
-    console.log("loadEvents");
-    var logoArea = document.getElementById('logoArea');
-    logoArea.addEventListener('click', function (){
-        location.href = "./";
-    });
+    const logoArea = document.getElementById('logoArea');
+    if(logoArea){
+        logoArea.addEventListener('click', function (){
+            location.href = "./";
+        });
+    }
 
-    var backBtn = document.getElementById("backBtn");
-    backBtn.addEventListener('click', function () {
-        history.back();
-    })
+    const backBtn = document.getElementById("backBtn");
+    if(backBtn){
+        backBtn.addEventListener('click', function () {
+            history.back();
+        })
+    }
 }
 
 function checkSessionValue(){
     console.log('Check My Session Value***************');
-    for(var key in window.sessionStorage) {
+    for(let key in window.sessionStorage) {
         console.log("key : " + key + ", value : " + sessionStorage.getItem(key));
     }
     console.log('*************************************');

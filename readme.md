@@ -54,3 +54,5 @@ DB : AWS Dynamo
 - Session, Cookie 관리
 - 자바스크립트 클래스와 객체
 - div 노드 자체를 객체로 만들 순 없을까
+- 내가 쓰는건 자바스크립트 무슨 버전? 버전이 있나
+- var, let, const 차이
