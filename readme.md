@@ -23,16 +23,18 @@
 
 ---
 
-### Tech Stack
+### Tech Stack ???
 
-Front-End : Thymeleaf(HTML, CSS, JS)  
+Front-End : 템플릿 엔진 Thymeleaf(HTML, CSS, JS)  
 [비교] React : 가상 DOM 안해봄, 숙련도 부족
 
-Back-End : Spring Boot  
+Back-End : Spring
+
+Framework : Spring Boot  
 [비교] Spring MVC, Node.JS
 
-DB : AWS Dynamo
-[비교] SQL : 엄격한 스키마 준수
+DB : AWS RDS, MariaDB
+[비교] SQL : 엄격한 스키마 준수 vs NoSQL : 느슨한 스키마
 
 호스팅
 
