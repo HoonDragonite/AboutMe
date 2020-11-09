@@ -112,7 +112,7 @@ table {
     font-size: 1em;
 }
 .nav-item:hover{
-    color: yellow;
+    color: white;
     font-weight: bold;
     cursor: pointer;
 }
@@ -178,6 +178,15 @@ table {
     height: 15vh;
     background: #202020;
     color: #fff;
+}
+.footer-item{
+    padding:5px;
+    font-size: 1em;
+}
+.footer-item:hover{
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
 }
 @media screen and (max-width: 768px) {
     /* 모바일에 사용될 스트일 시트를 여기에 작성합니다. */

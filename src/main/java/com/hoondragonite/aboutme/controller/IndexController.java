@@ -21,4 +21,9 @@ public class IndexController {
     public String moveToLogin(ModelAndView modelAndView){
         return "login";
     }
+
+    @RequestMapping(value = "/privacy")
+    public String privacy(Model model){
+        return "privacy";
+    }
 }

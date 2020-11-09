@@ -16,6 +16,13 @@ function loadEvents(){
             history.back();
         })
     }
+
+    const privacy = document.getElementById("privacy");
+    if(privacy){
+        privacy.addEventListener('click', function(){
+            location.href = "./privacy";
+        })
+    }
 }
 
 function checkSessionValue(){
