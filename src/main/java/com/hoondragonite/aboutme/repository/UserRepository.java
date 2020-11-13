@@ -1,6 +1,8 @@
-package com.hoondragonite.aboutme.domain.user;
+package com.hoondragonite.aboutme.repository;
 
 import java.util.Optional;
+
+import com.hoondragonite.aboutme.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Long> {

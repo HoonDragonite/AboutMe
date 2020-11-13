@@ -2,7 +2,7 @@ package com.hoondragonite.aboutme.config.auth;
 
 import com.hoondragonite.aboutme.config.auth.dto.SessionUser;
 import com.hoondragonite.aboutme.domain.user.User;
-import com.hoondragonite.aboutme.domain.user.UserRepository;
+import com.hoondragonite.aboutme.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
