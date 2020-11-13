@@ -39,6 +39,3 @@ GoogleService-Info.plist
 
 ## oAuth ## 나중에 꼭 다시 추가할 것
 # application-oauth.properties
-
-#pid
-spring-boot-app.pid
