@@ -1,0 +1,12 @@
+package com.hoondragonite.aboutme.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class UserinfoController {
+    @RequestMapping(value="/uinfo")
+    public String uinfo(){
+        return "userinfo.html";
+    }
+}
