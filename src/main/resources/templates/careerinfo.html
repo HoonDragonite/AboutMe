@@ -3,16 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>CareerInfo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#addcareer").on('click', function () {
+                //alert("button ok");
+                addtable();
+            });
+        });
+
+        function addtable() {
+            $("#careertable").append(
+                "<tr> <td><input type='text'></td>"
+                +"<td><input type='text'></td>"
+                +"<td><input type='text' placeholder='20201111'></td>"
+                +"<td><input type='text' placeholder='20201111'></td>"
+                +"</tr>"
+            );
+        }
+
+    </script>
 </head>
 <body>
 careerinfo
-<table>
+<table id="careertable" border="1">
+    <th>경력사항</th>
+    <th>설명</th>
+    <th>시작날짜</th>
+    <th>완료날짜</th>
+    <!--<tbody>
     <tr>
         <td>
-
-
+            <input type="text">
+        </td>
+        <td>
+            <input type="text">
+        </td>
+        <td>
+            <input type="text" placeholder="20201111">
+        </td>
+        <td>
+            <input type="text" placeholder="20201111">
         </td>
     </tr>
+    </tbody>-->
+
+    <tr>
+        <td colspan="4">
+            <input type="button" id="addcareer" value="추가 +">
+        </td>
+    </tr>
+
 
 </table>
 

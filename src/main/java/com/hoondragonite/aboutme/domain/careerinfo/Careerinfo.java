@@ -14,6 +14,7 @@ import javax.persistence.*;
 public class Careerinfo {
     @Id
     @GeneratedValue
+    @Column(length=50)
     private String name;
 
     @Column(length=200, nullable = true)
