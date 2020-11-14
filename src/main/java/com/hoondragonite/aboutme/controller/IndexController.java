@@ -22,9 +22,12 @@ public class IndexController {
 
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
 
-        if(user != null)
+        if(user != null) {
+            System.out.println(user.getEmail());
+            System.out.println(user.getName());
+            System.out.println(user.getPicture());
             model.addAttribute("userName", user.getName());
-
+        }
         return "index";
     }
 

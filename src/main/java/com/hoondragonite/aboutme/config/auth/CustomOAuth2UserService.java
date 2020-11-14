@@ -41,7 +41,6 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         //SessionUser : 세션에 사용자 정보를 담기위한 Dto, User 클래스보다 좋음
         httpSession.setAttribute("user", new SessionUser(user));
 
-
         return new DefaultOAuth2User(Collections.singleton(new SimpleGrantedAuthority(user.getRoleKey())),
                 attributes.getAttributes(),
                 attributes.getNameAttributeKey());
