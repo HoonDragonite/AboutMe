@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
     <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/userinfo.css}" rel="stylesheet">
     <title>About Me 사용자정보</title>
 </head>
 <body>
@@ -37,10 +38,18 @@
     <section>
         <div class="content">
             <div class="title-area">
-                <h1 class="title">사용자정보</h1>
-                <h2 class="subtitle" th:text="${userName}"></h2>
+                <h1 class="title" th:text="${userName} + '의 사용자정보'"></h1>
             </div>
+            <div class="desc-area">
+                <h2 class="desc-title">기본정보</h2>
+                <div class="desc-item">
+                    <form>
+                        <span class="item-name">이름</span>
+                        <input class="item-input" id="userName">
+                    </form>
 
+                </div>
+            </div>
         </div>
     </section>
     <!-- //section -->

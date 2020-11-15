@@ -1,0 +1,17 @@
+.desc-title{
+    padding-top: 20px;
+    font-size: 1.4rem;
+    text-align: left;
+}
+.desc-item{
+    padding-top: 40px;
+}
+.item-name{
+    font-size:1.2rem;
+}
+.item-input{
+    width: 100px;
+    height: 30px;
+    margin-left: 20px;
+    font-size:1.2rem;
+}
