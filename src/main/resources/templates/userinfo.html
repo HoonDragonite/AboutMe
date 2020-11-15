@@ -1,17 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>UserInfo</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/userinfo.css}" rel="stylesheet">
+    <title>About Me 사용자정보</title>
 </head>
 <body>
-<div>
-    <div>
-        uinfo page
-
-
-    </div>
+<div class="container">
+    <!-- header -->
+    <header>
+        <div class="header">
+            <div class="logo-area" id="logoArea">
+                <div class="logo">About Me</div>
+                <div class="sublogo">Make Your Portfolio.</div>
+            </div>
+        </div>
+    </header>
+    <!-- //header -->
+    <!-- nav -->
+    <nav>
+        <div class="nav">
+            <div class="nav-item" id="introduce">소개</div>
+            <div class="nav-item" id="userInfo">사용자정보</div>
+            <div class="nav-item" th:text="${userName}"></div>
+        </div>
+    </nav>
+    <!-- //nav -->
+    <!-- aside-->
+    <aside>
+        <div class="aside">
+            <div>사용자정보</div>
+            <div>경력</div>
+            <div>프로젝트</div>
+        </div>
+    </aside>
+    <!-- //aside-->
+    <!-- section -->
+    <section>
+        <div class="content">
+            <div class="title-area">
+                <h1 class="title" th:text="${userName} + '의 사용자정보'"></h1>
+            </div>
+            <div class="desc-area">
+                <h2 class="desc-title">기본정보</h2>
+                <div class="desc-item">
+                    <form>
+                        <span class="item-name">이름(한글)</span>
+                        <input class="item-input" id="korName">
+                    </form>
+                </div>
+                <div class="desc-item">
+                    <form>
+                        <span class="item-name">이름(영어)</span>
+                        <input class="item-input" id="engName">
+                    </form>
+                </div>
+                <div class="desc-item">
+                    <form>
+                        <span class="item-name">이메일</span>
+                        <input class="item-input" id="email">
+                    </form>
+                </div>
+                <div class="desc-item">
+                    <form>
+                        <span class="item-name">연락처</span>
+                        <input class="item-input" id="contact">
+                    </form>
+                </div>
+                <div class="desc-item">
+                    <form>
+                        <span class="item-name">블로그</span>
+                        <input class="item-input" id="blog">
+                    </form>
+                </div>
+                <div class="desc-item">
+                    <form>
+                        <div class="item-name">자기소개</div>
+                        <input class="item-input" id="selfIntroduce">
+                    </form>
+                </div>
+            </div>
+            <div class="desc-area">
+                <button class="btn">저장</button>
+            </div>
+        </div>
+    </section>
+    <!-- //section -->
+    <!-- footer -->
+    <footer>
+        <div class="footer">
+            <div class="footer-item">Contact : lsoonnoon@gmail.com</div>
+            <div class="footer-item" id="privacy">개인정보처리방침</div>
+        </div>
+    </footer>
+    <!-- //footer -->
 </div>
-
+<script th:src="@{/js/script.js}"></script>
 </body>
 </html>
