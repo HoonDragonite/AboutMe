@@ -1,17 +1,27 @@
-.desc-title{
+.desc-area{
     padding-top: 20px;
+}
+.desc-title{
     font-size: 1.4rem;
     text-align: left;
+    border-left: solid 3px #2e75b6;
+    padding-left: 5px;
 }
 .desc-item{
     padding-top: 40px;
 }
 .item-name{
-    font-size:1.2rem;
+    display: inline-block;
+    font-size: 1.2rem;
+    width: 100px;
 }
 .item-input{
-    width: 100px;
+    width: 250px;
     height: 30px;
     margin-left: 20px;
     font-size:1.2rem;
+}
+#selfIntroduce{
+    width: 500px;
+    height: 80px;
 }

@@ -8,46 +8,42 @@ import javax.persistence.*;
 
 @Getter
 @NoArgsConstructor
-@Entity(name = "UserInfo")
+@Entity
 public class UserInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long uInfoID;
-    @Column
+    @Column(length = 30)
     private String korName;
-    @Column
+    @Column(length = 30)
     private String engName;
-    @Column
+    @Column(length = 50)
     private String email;
-    @Column
+    @Column(length = 30)
     private String contact;
-    @Column
-    private String contact2;
-    @Column
-    private String address;
-    @Column
+    @Column(length = 200)
     private String blog;
+    @Column(length = 300)
+    private String selfIntroduce;
 
     @Builder
-    public UserInfo(String korName, String engName, String email, String contact, String contact2, String address, String blog) {
+    public UserInfo(String korName, String engName, String email, String contact, String blog, String selfIntroduce) {
         this.korName = korName;
         this.engName = engName;
         this.email = email;
         this.contact = contact;
-        this.contact2 = contact2;
-        this.address = address;
         this.blog = blog;
+        this.selfIntroduce = selfIntroduce;
     }
     
     //Setter 대신 작성하는 메소드
-    public UserInfo setUserInfo(String korName, String engName, String email, String contact, String contact2, String address, String blog) {
+    public UserInfo setUserInfo(String korName, String engName, String email, String contact, String blog, String selfIntroduce) {
         this.korName = korName;
         this.engName = engName;
         this.email = email;
         this.contact = contact;
-        this.contact2 = contact2;
-        this.address = address;
         this.blog = blog;
+        this.selfIntroduce = selfIntroduce;
         return this;
     }
 }
