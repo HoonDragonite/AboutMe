@@ -10,12 +10,12 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class UserinfoController {
 
-
     @RequestMapping(value="/userinfo")
     public String userInfo(Model model, HttpSession httpSession){
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
 
         if(user != null) {
+            System.out.println("사용자정보" + user.getUID());
             System.out.println("사용자정보" + user.getEmail());
             System.out.println("사용자정보" + user.getName());
             System.out.println("사용자정보" + user.getPicture());

@@ -23,6 +23,7 @@ public class IndexController {
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
 
         if(user != null) {
+            System.out.println(user.getUID());
             System.out.println(user.getEmail());
             System.out.println(user.getName());
             System.out.println(user.getPicture());
