@@ -48,5 +48,6 @@ public class UserInfo {
         this.contact2 = contact2;
         this.address = address;
         this.blog = blog;
+        return this;
     }
 }
