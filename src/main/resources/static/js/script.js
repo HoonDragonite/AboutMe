@@ -23,6 +23,20 @@ function loadEvents(){
             location.href = "./privacy";
         })
     }
+
+    const introduce = document.getElementById("introduce");
+    if(introduce){
+        introduce.addEventListener('click', function () {
+            location.href = "./introduce"
+        })
+    }
+
+    const userInfo = document.getElementById("userInfo");
+    if(userInfo){
+        userInfo.addEventListener('click', function () {
+            location.href = "./userinfo"
+        })
+    }
 }
 
 function checkSessionValue(){
