@@ -3,34 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <title>CareerInfo</title>
+<!--
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
+-->
+    <script type="text/javascript">
         $(function () {
             $("#addcareer").on('click', function () {
                 //alert("button ok");
-                addtable();
+                addcareer();
             });
+            $("#cdel").on('click', function () {
+                deletecareer();
+            });
+            $("#savecareer").on('click', function () {
+                savecareer();
+            });
+
         });
 
-        function addtable() {
+        function addcareer() {
             $("#careertable").append(
-                "<tr> <td><input type='text'></td>"
-                +"<td><input type='text'></td>"
-                +"<td><input type='text' placeholder='20201111'></td>"
-                +"<td><input type='text' placeholder='20201111'></td>"
+                "<tr>"
+                +"<td><input type='text' id='cname'></td>"
+                +"<td><input type='text' id='cment'></td>"
+                +"<td><input type='text' id='sdate' placeholder='20201111'></td>"
+                +"<td><input type='text' id='edate' placeholder='20201111'></td>"
+                +"<td><input type='button' id='cdel' value='삭제'></td>"
                 +"</tr>"
             );
-        }
+        }//addcareer
+
+        function savecareer(){
+            var cname = $("#cname").val();
+            var cment = $('#cment').val();
+            var sdate = $('#sdate').val();
+            var edate = $('#edate').val();
+
+            var objParam = {
+                cname : $("#cname").val(),
+                cment : $('#cment').val(),
+                sdate : $('#sdate').val(),
+                edate : $('#edate').val()
+            }
+
+            //alert(cname+', '+cment+', '+sdate+', '+edate);
+            console.log("objParm=>>"+JSON.stringify(objParam));
+
+            var yn = confirm('저장하시겠습니까?');
+            if(yn){
+                $.ajax({
+                    url:'/savecareer',
+                    dataType:'JSON',
+                    type:'post',
+                    data:JSON.stringify(objParam),
+                    success : function(obj){
+                        console.log(obj);
+                        alert("저장되었습니다.");
+                        //location.href="/cinfo";
+                    }, error : function(xhr, status, error){
+                        alert('error > '+xhr+", "+ error);
+                    }
+                });
+            }
+        }//savecareer
+
+        function deletecareer(){
+            var params = {
+                cname : $("#cname").val()
+            };
+            console.log("deleteclick cname=> " + JSON.stringify(params));
+
+            var yn = confirm("경력사항을 삭제하시겠습니까?");
+            if(yn){
+                $.ajax({
+                    url : "deletecareer",
+                    type : "POST",
+                    data : params,
+                    success : function(obj) {
+                        console.log("delete obj>> " + obj);
+                        alert("삭제되었습니다");
+                    },
+                    error : function(xhr, status, error) {
+                    }
+                });// ajax
+            }//if
+        }//deletecareer
+
 
     </script>
 </head>
 <body>
+<!--
+<script src="/webjars/jquery/2.2.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+-->
+
 careerinfo
+<input type="button" id="addcareer" value="추가 +">
+<input type="button" id="savecareer" value="저장">
+<form class="careerform">
+
+</form>
 <table id="careertable" border="1">
     <th>경력사항</th>
     <th>설명</th>
     <th>시작날짜</th>
     <th>완료날짜</th>
+    <th> - </th>
     <!--<tbody>
     <tr>
         <td>
@@ -48,11 +127,11 @@ careerinfo
     </tr>
     </tbody>-->
 
-    <tr>
+   <!-- <tr>
         <td colspan="4">
             <input type="button" id="addcareer" value="추가 +">
         </td>
-    </tr>
+    </tr>-->
 
 
 </table>

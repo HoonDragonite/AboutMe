@@ -8,7 +8,7 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 public class CareerinfoDto {
-    private String name;
+    private int cno;
     private String cicarname;
     private String cicomment;
     private String startdate;
@@ -16,7 +16,7 @@ public class CareerinfoDto {
 
     public Careerinfo toEntity(){
         Careerinfo build = Careerinfo.builder()
-                .name(name)
+                .cno(cno)
                 .cicarname(cicarname)
                 .cicomment(cicomment)
                 .startdate(startdate)
@@ -26,12 +26,16 @@ public class CareerinfoDto {
     }
 
     @Builder
-    public CareerinfoDto(String name, String cicarname, String cicomment, String startdate, String enddate){
-        this.name = name;
+    public CareerinfoDto(int cno, String cicarname, String cicomment, String startdate, String enddate){
+        this.cno = cno;
         this.cicarname = cicarname;
         this.cicomment = cicomment;
         this.startdate = startdate;
         this.enddate = enddate;
     }
+
+
+
+
 
 }

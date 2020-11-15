@@ -13,14 +13,13 @@ import javax.persistence.*;
 @EntityListeners(AuditingEntityListener.class)
 public class Careerinfo {
     @Id
-    @GeneratedValue
-    @Column(length=50)
-    private String name;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int cno;
 
     @Column(length=200, nullable = true)
     private String cicarname;
 
-    @Column(length=500, nullable = true)
+    @Column(columnDefinition = "TEXT", nullable = true)
     private String cicomment;
 
     @Column(length = 8,nullable = true)
@@ -30,8 +29,8 @@ public class Careerinfo {
     private String enddate;
 
     @Builder
-    public Careerinfo(String name, String cicarname, String cicomment, String startdate, String enddate){
-        this.name = name;
+    public Careerinfo(int cno, String cicarname, String cicomment, String startdate, String enddate){
+        this.cno = cno;
         this.cicarname = cicarname;
         this.cicomment = cicomment;
         this.startdate = startdate;
