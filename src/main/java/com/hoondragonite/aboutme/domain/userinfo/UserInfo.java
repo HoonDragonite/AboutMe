@@ -13,6 +13,8 @@ public class UserInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long uInfoID;
+    @Column(nullable = false)
+    private Long uID;
     @Column(length = 30)
     private String korName;
     @Column(length = 30)
