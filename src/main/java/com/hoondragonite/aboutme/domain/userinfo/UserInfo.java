@@ -29,7 +29,8 @@ public class UserInfo {
     private String selfIntroduce;
 
     @Builder
-    public UserInfo(String korName, String engName, String email, String contact, String blog, String selfIntroduce) {
+    public UserInfo(Long uID, String korName, String engName, String email, String contact, String blog, String selfIntroduce) {
+        this.uID = uID;
         this.korName = korName;
         this.engName = engName;
         this.email = email;
