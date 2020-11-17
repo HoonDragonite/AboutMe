@@ -51,7 +51,5 @@ public class UserInfoRepositoryTest {
         UserInfo userInfo = userInfoList.get(0);
         assertThat(userInfo.getKorName(), is("이승훈"));
         assertThat(userInfo.getEngName(), is("SeungHoon Lee"));
-        System.out.println("사용자정보저장_불러오기 테스트*******");
-        System.out.println("userInfo korName : " + userInfo.getKorName());
     }
 }
