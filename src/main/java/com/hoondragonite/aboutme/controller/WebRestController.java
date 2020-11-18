@@ -27,6 +27,9 @@ public class WebRestController {
         System.out.println(testing.getBlog());
         System.out.println(testing.getSelfIntroduce());
         System.out.println("userInfoSave Test 끝*********");
+        /*
+
+         */
         //userInfoRepository.save(dto.toEntity());
     }
 }

@@ -38,15 +38,4 @@ public class UserInfo {
         this.blog = blog;
         this.selfIntroduce = selfIntroduce;
     }
-    
-    //Setter 대신 작성하는 메소드
-    public UserInfo setUserInfo(String korName, String engName, String email, String contact, String blog, String selfIntroduce) {
-        this.korName = korName;
-        this.engName = engName;
-        this.email = email;
-        this.contact = contact;
-        this.blog = blog;
-        this.selfIntroduce = selfIntroduce;
-        return this;
-    }
 }
