@@ -35,11 +35,6 @@ public class IndexController {
     @RequestMapping(value = "/template")
     public String moveToSelect(ModelAndView modelAndView){ return "template";}
 
-    @RequestMapping(value = "/login")
-    public String moveToLogin(ModelAndView modelAndView){
-        return "login";
-    }
-
     @RequestMapping(value = "/privacy")
     public String privacy(Model model){ return "privacy"; }
 }
