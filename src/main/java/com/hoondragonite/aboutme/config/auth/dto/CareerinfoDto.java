@@ -25,7 +25,7 @@ public class CareerinfoDto {
     }
 
     @Builder
-    public CareerinfoDto(Long cno, String cicarname, String cicomment, String startdate, String enddate){
+    public CareerinfoDto(Careerinfo careerinfo){
         this.cno = cno;
         this.cicarname = cicarname;
         this.cicomment = cicomment;

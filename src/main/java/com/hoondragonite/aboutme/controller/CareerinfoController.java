@@ -29,33 +29,28 @@ public class CareerinfoController {
 
     @RequestMapping(value = "/cinfo")
     public String clist(Model model, CareerinfoDto careerinfoDto){
-        List<CareerinfoDto> cdtolist = careerinfoService.getCareerList();
+        //List<CareerinfoDto> cdtolist = careerinfoService.getCareerList();
         //careerinfoDto.getCno();
-        model.addAttribute("clist",cdtolist);
+        //model.addAttribute("clist",cdtolist);
         return "careerinfo";
     }
 
     @RequestMapping("/savecareer")
-    //@ResponseBody
-    public void writeCareer(CareerinfoDto careerinfoDto) throws Exception{
-        System.out.printf("careerinfoDto > "+careerinfoDto);
+    @ResponseBody
+    public void writeCareer(Model model, CareerinfoDto careerinfoDto) throws Exception{
+        System.out.println("careerinfoDto > "+careerinfoDto);
         careerinfoService.saveCareer(careerinfoDto);
+        model.addAttribute("careerinfo",careerinfoDto.getCno());
+
+        Map<String,String> careerDto = new HashMap<>();
+        careerDto.put("cname",careerinfoDto.getCicarname());
+        careerDto.put("cment",careerinfoDto.getCicomment());
+        careerDto.put("sdate",careerinfoDto.getStartdate());
+        careerDto.put("edate",careerinfoDto.getEnddate());
+        System.out.println("dto > "+careerinfoDto);
+        System.out.println("careerDto > "+careerDto);
         //return "careerinfo";
     }
-
-//    @RequestMapping(value = "/savecareer")
-//    @ResponseBody
-//    public String savecareer(@ModelAttribute CareerinfoDto careerinfoDto){
-//        careerinfoService.saveCareer(careerinfoDto);
-//        Map<String,String> careerDto = new HashMap<>();
-//        careerDto.put("cname",careerinfoDto.getCicarname());
-//        careerDto.put("cment",careerinfoDto.getCicomment());
-//        careerDto.put("sdate",careerinfoDto.getStartdate());
-//        careerDto.put("edate",careerinfoDto.getEnddate());
-//
-//        return careerDto;
-//    }
-
 
     @RequestMapping(value = "/deletecareer")
     public String deletecareer(@RequestParam(value = "cno",required = false) Long cno) throws Exception{
