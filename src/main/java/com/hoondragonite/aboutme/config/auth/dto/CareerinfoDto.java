@@ -4,11 +4,10 @@ import com.hoondragonite.aboutme.domain.careerinfo.Careerinfo;
 import lombok.*;
 
 @Getter
-@Setter
 @ToString
 @NoArgsConstructor
 public class CareerinfoDto {
-    private int cno;
+    private Long cno;
     private String cicarname;
     private String cicomment;
     private String startdate;
@@ -26,7 +25,7 @@ public class CareerinfoDto {
     }
 
     @Builder
-    public CareerinfoDto(int cno, String cicarname, String cicomment, String startdate, String enddate){
+    public CareerinfoDto(Long cno, String cicarname, String cicomment, String startdate, String enddate){
         this.cno = cno;
         this.cicarname = cicarname;
         this.cicomment = cicomment;
