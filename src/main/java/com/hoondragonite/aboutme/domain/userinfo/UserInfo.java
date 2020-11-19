@@ -1,5 +1,6 @@
 package com.hoondragonite.aboutme.domain.userinfo;
 
+import com.hoondragonite.aboutme.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,10 +10,9 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class UserInfo {
+public class UserInfo extends BaseTimeEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long uInfoID;
+    private Long uID;
     @Column(length = 30)
     private String korName;
     @Column(length = 30)
@@ -35,15 +35,17 @@ public class UserInfo {
         this.blog = blog;
         this.selfIntroduce = selfIntroduce;
     }
-    
-    //Setter 대신 작성하는 메소드
-    public UserInfo setUserInfo(String korName, String engName, String email, String contact, String blog, String selfIntroduce) {
+
+    public void setUID(Long uID){
+        this.uID = uID;
+    }
+
+    public void updateUserInfo(String korName, String engName, String email, String contact, String blog, String selfIntroduce){
         this.korName = korName;
         this.engName = engName;
         this.email = email;
         this.contact = contact;
         this.blog = blog;
         this.selfIntroduce = selfIntroduce;
-        return this;
     }
 }
