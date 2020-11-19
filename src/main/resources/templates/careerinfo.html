@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+-->
 <head>
     <meta charset="UTF-8">
     <title>CareerInfo</title>
-<!--
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
--->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(function () {
             $("#addcareer").on('click', function () {
@@ -38,13 +40,14 @@
             var cment = $('#cment').val();
             var sdate = $('#sdate').val();
             var edate = $('#edate').val();
+            var cn;
 
             var objParam = {
                 cname : $("#cname").val(),
                 cment : $('#cment').val(),
                 sdate : $('#sdate').val(),
                 edate : $('#edate').val()
-            }
+            };
 
             //alert(cname+', '+cment+', '+sdate+', '+edate);
             console.log("objParm=>>"+JSON.stringify(objParam));
@@ -54,14 +57,15 @@
                 $.ajax({
                     url:'/savecareer',
                     dataType:'JSON',
+                    contentType: 'application/json',
                     type:'post',
                     data:JSON.stringify(objParam),
-                    success : function(obj){
-                        console.log(obj);
+                    success : function(data){
+                        console.log(data);
                         alert("저장되었습니다.");
                         //location.href="/cinfo";
-                    }, error : function(xhr, status, error){
-                        alert('error > '+xhr+", "+ error);
+                    }, error : function(request, status, error){
+                        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                     }
                 });
             }
@@ -89,27 +93,32 @@
             }//if
         }//deletecareer
 
-
     </script>
 </head>
 <body>
-<!--
-<script src="/webjars/jquery/2.2.1/jquery.min.js"></script>
-<script src="/webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
--->
 
 careerinfo
-<input type="button" id="addcareer" value="추가 +">
-<input type="button" id="savecareer" value="저장">
-<form class="careerform">
+<div class="container">
+    <input type="button" id="addcareer" value="추가 +">
+    <input type="button" id="savecareer" value="저장">
 
-</form>
+</div>
+
 <table id="careertable" border="1">
     <th>경력사항</th>
     <th>설명</th>
     <th>시작날짜</th>
     <th>완료날짜</th>
     <th> - </th>
+   <!-- <tr class="text-center" th:each="clist : ${clist}">
+        <td scope="row">
+            <span th:text="${clist.cicarname}"></span>
+        </td>
+        <td>
+            <span th:text="${clist.cicomment}"></span>
+            <span th:text="${clist.cno}"></span>
+        </td>
+    </tr>-->
     <!--<tbody>
     <tr>
         <td>
@@ -136,6 +145,6 @@ careerinfo
 
 </table>
 
-
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </body>
 </html>
