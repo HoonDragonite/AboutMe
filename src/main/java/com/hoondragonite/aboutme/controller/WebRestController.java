@@ -30,7 +30,7 @@ public class WebRestController {
             System.out.println("사용자정보" + user.getName());
             System.out.println("사용자정보" + user.getPicture());
 
-            //userInfoService.saveUserInfo(user.getUID(), dto);
+            userInfoService.saveUserInfo(user.getUID(), dto);
         }
     }
 }

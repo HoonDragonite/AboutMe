@@ -10,7 +10,6 @@ function loadEvents(){
 function sendBaseInfo(){
 
     var form = {
-        uID : 9999,
         korName : ($('#korName').val()),
         engName : $('#engName').val(),
         email : $('#email').val(),
