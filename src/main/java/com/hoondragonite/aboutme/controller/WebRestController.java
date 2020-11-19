@@ -4,6 +4,7 @@ import com.hoondragonite.aboutme.config.auth.dto.SessionUser;
 import com.hoondragonite.aboutme.domain.userinfo.UserInfo;
 import com.hoondragonite.aboutme.dto.UserInfoSaveRequestDto;
 import com.hoondragonite.aboutme.repository.UserInfoRepository;
+import com.hoondragonite.aboutme.service.UserInfoService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpSession;
 public class WebRestController {
 
     private UserInfoRepository userInfoRepository; // Bean 객체를 생성자로 주입
+    private UserInfoService userInfoService;
 
     @PostMapping("/userInfoSave") // RequestMapping + POST 방식
     public void saveUserInfo(@RequestBody UserInfoSaveRequestDto dto, HttpSession httpSession){
@@ -28,20 +30,7 @@ public class WebRestController {
             System.out.println("사용자정보" + user.getName());
             System.out.println("사용자정보" + user.getPicture());
 
-            dto.setUID(user.getUID());
+            //userInfoService.saveUserInfo(user.getUID(), dto);
         }
-
-        System.out.println("userInfoSave Test*********");
-        UserInfo test = dto.toEntity();
-        System.out.println(test.getUID());
-        System.out.println(test.getKorName());
-        System.out.println(test.getEngName());
-        System.out.println(test.getEmail());
-        System.out.println(test.getContact());
-        System.out.println(test.getBlog());
-        System.out.println(test.getSelfIntroduce());
-        System.out.println("userInfoSave Test 끝*********");
-
-        //userInfoRepository.save(dto.toEntity());
     }
 }

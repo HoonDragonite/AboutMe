@@ -35,7 +35,6 @@ public class UserInfoRepositoryTest {
     public void 사용자정보저장_불러오기() {
         //given : 테스트 기반 환경 작성
         userInfoRepository.save(UserInfo.builder()
-                .uID(new Long(1))
                 .korName("이승훈")
                 .engName("SeungHoon Lee")
                 .email("a@naver.com")

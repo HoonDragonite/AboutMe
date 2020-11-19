@@ -1,5 +1,6 @@
 package com.hoondragonite.aboutme.domain.userinfo;
 
+import com.hoondragonite.aboutme.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,11 +10,8 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class UserInfo {
+public class UserInfo extends BaseTimeEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long uInfoID;
-    @Column(nullable = false)
     private Long uID;
     @Column(length = 30)
     private String korName;
@@ -29,8 +27,20 @@ public class UserInfo {
     private String selfIntroduce;
 
     @Builder
-    public UserInfo(Long uID, String korName, String engName, String email, String contact, String blog, String selfIntroduce) {
+    public UserInfo(String korName, String engName, String email, String contact, String blog, String selfIntroduce) {
+        this.korName = korName;
+        this.engName = engName;
+        this.email = email;
+        this.contact = contact;
+        this.blog = blog;
+        this.selfIntroduce = selfIntroduce;
+    }
+
+    public void setUID(Long uID){
         this.uID = uID;
+    }
+
+    public void updateUserInfo(String korName, String engName, String email, String contact, String blog, String selfIntroduce){
         this.korName = korName;
         this.engName = engName;
         this.email = email;

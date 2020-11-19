@@ -18,7 +18,6 @@ import javax.servlet.http.HttpSession;
 @NoArgsConstructor
 public class UserInfoSaveRequestDto {
 
-    private Long uID;
     private String korName;
     private String engName;
     private String email;
@@ -27,8 +26,7 @@ public class UserInfoSaveRequestDto {
     private String selfIntroduce;
 
     @Builder
-    public UserInfoSaveRequestDto( Long uID, String korName, String engName, String email,String contact, String blog, String selfIntroduce){
-        this.uID = uID;
+    public UserInfoSaveRequestDto(String korName, String engName, String email,String contact, String blog, String selfIntroduce){
         this.korName = korName;
         this.engName = engName;
         this.email = email;
@@ -36,11 +34,10 @@ public class UserInfoSaveRequestDto {
         this.blog = blog;
         this.selfIntroduce = selfIntroduce;
     }
-
+    /*
     public UserInfo toEntity(){
 
         System.out.println("toEntity*******************");
-        System.out.println(uID);
         System.out.println(korName);
         System.out.println(engName);
         System.out.println(email);
@@ -51,7 +48,6 @@ public class UserInfoSaveRequestDto {
 
 
         return UserInfo.builder()
-                .uID(uID)
                 .korName(korName)
                 .engName(engName)
                 .email(email)
@@ -60,4 +56,5 @@ public class UserInfoSaveRequestDto {
                 .selfIntroduce(selfIntroduce)
                 .build();
     }
+     */
 }

@@ -37,10 +37,11 @@ public class UserInfoServiceTest {
 
     /* 왼쪽 밑에 초록버튼으로 메소드 실행해보기*/
     @Test
-    public void 사용자정보_찾기() {
+    public void 사용자정보_저장() {
+        System.out.println("*****사용자정보_저장 테스트 시작*****");
         //given : 테스트 기반 환경 작성
-        userInfoService.save(UserInfoSaveRequestDto.builder()
-                .uID(new Long(1))
+        Long testUID = new Long(1);
+        userInfoService.saveUserInfo(testUID, UserInfoSaveRequestDto.builder()
                 .korName("이승훈")
                 .engName("SeungHoon Lee")
                 .email("a@naver.com")
@@ -49,11 +50,39 @@ public class UserInfoServiceTest {
                 .selfIntroduce("hello")
                 .build());
 
-        //when : 테스트 하고자 하는 행위
-        Optional<UserInfo> userInfo = userInfoService.findByuID(new Long(1));
-        //then : 테스트 결과 검증
+        Long testUID2 = new Long(2);
+        userInfoService.saveUserInfo(testUID2, UserInfoSaveRequestDto.builder()
+                .korName("테스트")
+                .engName("test")
+                .email("test@naver.com")
+                .contact("010-1234-5678")
+                .blog("a.test.com")
+                .selfIntroduce("tetetest")
+                .build());
 
-        assertThat(userInfo.get().getKorName(), is("이승훈"));
-        System.out.println("테스트결과" + userInfo.get().getKorName());
+        //when : 테스트 하고자 하는 행위
+        userInfoService.saveUserInfo(testUID2, UserInfoSaveRequestDto.builder()
+                .korName("업데이트테스트")
+                .engName("test")
+                .email("test@naver.com")
+                .contact("010-1234-5678")
+                .blog("a.test.com")
+                .selfIntroduce("tetetest")
+                .build());
+
+        Optional<UserInfo> userInfo = userInfoService.findByuID(testUID);
+        Optional<UserInfo> userInfo2 = userInfoService.findByuID(testUID2);
+
+        //then : 테스트 결과 검증
+        if(userInfo.isPresent()){
+            System.out.println("userInfo 이름 : " + userInfo.get().getKorName());
+            assertThat(userInfo.get().getKorName(), is("이승훈"));
+        }
+        if(userInfo2.isPresent()){
+            System.out.println("userInfo2 이름 : " + userInfo2.get().getKorName());
+            assertThat(userInfo2.get().getKorName(), is("업데이트테스트"));
+        }
+
+        System.out.println("*****사용자정보_저장 테스트 종료*****");
     }
 }

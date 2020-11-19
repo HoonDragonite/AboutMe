@@ -1,6 +1,7 @@
 package com.hoondragonite.aboutme.repository;
 
 import com.hoondragonite.aboutme.domain.userinfo.UserInfo;
+import com.hoondragonite.aboutme.dto.UserInfoSaveRequestDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
