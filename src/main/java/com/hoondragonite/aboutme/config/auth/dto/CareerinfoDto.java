@@ -24,7 +24,7 @@ public class CareerinfoDto {
         return build;
     }
 
-    @Builder
+    //@Builder
     public CareerinfoDto(Careerinfo careerinfo){
         this.cno = cno;
         this.cicarname = cicarname;

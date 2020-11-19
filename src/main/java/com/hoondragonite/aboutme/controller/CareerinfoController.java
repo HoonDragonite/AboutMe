@@ -35,9 +35,8 @@ public class CareerinfoController {
         return "careerinfo";
     }
 
-    @RequestMapping("/savecareer")
-    @ResponseBody
-    public void writeCareer(Model model, CareerinfoDto careerinfoDto) throws Exception{
+    @RequestMapping(value = "/savecareer")
+    public Map<String,String> writeCareer(Model model,@RequestBody CareerinfoDto careerinfoDto) throws Exception{
         System.out.println("careerinfoDto > "+careerinfoDto);
         careerinfoService.saveCareer(careerinfoDto);
         model.addAttribute("careerinfo",careerinfoDto.getCno());
@@ -49,7 +48,7 @@ public class CareerinfoController {
         careerDto.put("edate",careerinfoDto.getEnddate());
         System.out.println("dto > "+careerinfoDto);
         System.out.println("careerDto > "+careerDto);
-        //return "careerinfo";
+        return careerDto;
     }
 
     @RequestMapping(value = "/deletecareer")

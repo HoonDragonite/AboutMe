@@ -32,26 +32,26 @@ function addcareer() {
 }//addcareer
 
 function savecareer(){
-    var cname = $("#cname").val();
+    var cname = $('#cname').val();
     var cment = $('#cment').val();
     var sdate = $('#sdate').val();
     var edate = $('#edate').val();
 
     var objParam = {
-        "cicarname" : cname,
-        "cicomment" : cment,
-        "startdate" : sdate,
-        "enddate" : edate,
+        cicarname : cname,
+        cicomment : cment,
+        startdate : sdate,
+        enddate : edate
     };
     console.log("objParm=>>"+JSON.stringify(objParam));
 
     var yn = confirm('저장하시겠습니까?');
     if(yn){
         $.ajax({
-            url:'/savecareer',
-            //dataType:'json',
-            //contentType: 'application/json',
-            type:'post',
+            url:"/savecareer",
+            dataType:"JSON",
+            contentType: "application/json",
+            type:"post",
             data:JSON.stringify(objParam),
             success : function(data){
                 console.log(data);
