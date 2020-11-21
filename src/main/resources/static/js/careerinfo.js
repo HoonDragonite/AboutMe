@@ -4,9 +4,15 @@ function careerloadEvents(){
 
     $( document ).ready(function() {
         console.log( "ready!" );
+
+        //getCareerCallback();
+
         $("#addcareer").on('click', function () {
             //alert("button ok");
             addcareer();
+        });
+        $(".cmodify").on('click', function () {
+            modifycareer();
         });
         $(".cdel").on('click', function () {
             deletecareer();
@@ -26,7 +32,9 @@ function addcareer() {
         +"<td><input type='text' id='cment'></td>"
         +"<td><input type='text' id='sdate' placeholder='20201111'></td>"
         +"<td><input type='text' id='edate' placeholder='20201111'></td>"
-        +"<td><input type='button' class='cdel' value='삭제'></td>"
+        +"<td><button class='cmodify' value='수정'>수정</button>"
+        +"<button class='cdel' value='삭제'>삭제</button>"
+        +"</td>"
         +"</tr>"
     );
 }//addcareer
@@ -56,9 +64,10 @@ function savecareer(){
             success : function(data){
                 console.log(data);
                 alert("저장되었습니다.");
-                //location.href="/cinfo";
-            }, error : function(request, status, error){
-                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                location.href="/cinfo";
+            }, error : function(request, status, error){ //+request.responseText
+                location.href="/cinfo";
+                //alert("code:"+request.status+"\n"+"message:"+"\n"+"error:"+error);
             }
         });
     }
@@ -66,22 +75,64 @@ function savecareer(){
 
 function deletecareer(){
     var params = {
-        cname : $("#cname").val()
+        cno : $(".cno").val()
     };
-    console.log("deleteclick cname=> " + JSON.stringify(params));
+    console.log("deleteclick cno=> " + JSON.stringify(params));
 
     var yn = confirm("경력사항을 삭제하시겠습니까?");
     if(yn){
         $.ajax({
-            url : "deletecareer",
+            url : "/deletecareer/"+JSON.stringify(params),
             type : "POST",
             data : params,
+            datatype : 'json',
+            contentType: "application/json",
             success : function(obj) {
                 console.log("delete obj>> " + obj);
                 alert("삭제되었습니다");
+                location.href = "/cinfo";
             },error : function(request, status, error){
                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
             }
         });// ajax
     }//if
 }//deletecareer
+
+
+function getCareerCallback(){
+    // if(obj !=null){
+    //     var cname = obj.cname;
+    //     var cment = obj.cment;
+    //     var sdate = obj.sdate;
+    //     var edate = obj.edate;
+    //
+    //     $("#cname").val(cname);
+    //     $('#cment').val(cment);
+    //     $('#sdate').val(sdate);
+    //     $('#edate').val(edate);
+    // }
+
+    alert("");
+
+
+    $.ajax({
+        url : "cnolist",
+        //type : "POST",
+        dataType:"JSON",
+        //data : params,
+        contentType: "application/json",
+        success : function(obj) {
+            console.log("cnolist obj>> " + obj);
+            alert("obj"+obj);
+        },error : function(request, status, error){
+            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+    });// ajax
+}
+
+
+function modifycareer(){
+    alert("");
+
+    
+}

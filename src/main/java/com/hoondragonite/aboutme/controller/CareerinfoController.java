@@ -27,34 +27,37 @@ public class CareerinfoController {
         this.careerinfoService = careerinfoService;
     }
 
+    //목록조회
     @RequestMapping(value = "/cinfo")
-    public String clist(Model model, CareerinfoDto careerinfoDto){
-        //List<CareerinfoDto> cdtolist = careerinfoService.getCareerList();
-        //careerinfoDto.getCno();
-        //model.addAttribute("clist",cdtolist);
+    public String careerinfo(Model model){
+        List cdtolist = careerinfoService.getCareerList();
+        model.addAttribute("clist",cdtolist);
+        System.out.println("careerinfoService.getCareerList() > "+cdtolist);
+
         return "careerinfo";
     }
 
-    @RequestMapping(value = "/savecareer")
-    public Map<String,String> writeCareer(Model model,@RequestBody CareerinfoDto careerinfoDto) throws Exception{
-        System.out.println("careerinfoDto > "+careerinfoDto);
-        careerinfoService.saveCareer(careerinfoDto);
-        model.addAttribute("careerinfo",careerinfoDto.getCno());
-
-        Map<String,String> careerDto = new HashMap<>();
-        careerDto.put("cname",careerinfoDto.getCicarname());
-        careerDto.put("cment",careerinfoDto.getCicomment());
-        careerDto.put("sdate",careerinfoDto.getStartdate());
-        careerDto.put("edate",careerinfoDto.getEnddate());
-        System.out.println("dto > "+careerinfoDto);
-        System.out.println("careerDto > "+careerDto);
-        return careerDto;
+    @PostMapping("/savecareer")
+    public String saveCareer(@RequestBody Careerinfo careerinfo) throws Exception{
+        careerinfoService.saveCareer(careerinfo);
+        return "careerinfo";
     }
 
-    @RequestMapping(value = "/deletecareer")
-    public String deletecareer(@RequestParam(value = "cno",required = false) Long cno) throws Exception{
-        return "";
-    }
+    //경력수정
+//    @GetMapping("modifycareer")
+//    public String modifycareer(@PathVariable("cno") Long cno,Model model)throws Exception{
+//        CareerinfoDto dto = careerinfoService.updateCareer(cno);
+//        model.addAttribute("cdto",dto);
+//        return "careerinfo";
+//    }
+
+
+    //경력삭제
+//    @RequestMapping(value = "/deletecareer/{cno}")
+//    public void deletecareer(@PathVariable("cno") Long cno) throws Exception{
+//        System.out.println("deletecareer cno > "+cno);
+//        careerinfoService.deleteCareer(cno);
+//    }
 
 
 }
