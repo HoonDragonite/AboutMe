@@ -8,6 +8,7 @@ function loadEvents(){
 }
 
 function sendBaseInfo(){
+    $('#baseInfoBtn').html("Loading...");
 
     let form = {
         korName : ($('#korName').val()),
@@ -27,9 +28,11 @@ function sendBaseInfo(){
         contentType: 'application/json',
         data: JSON.stringify(form),
         success: function(data) {
+            $('#baseInfoBtn').html("저장");
             console.log("success! uID is " + data);
         },
         error: function(error){
+            $('#baseInfoBtn').html("저장");
             console.log("error : " + error);
             alert("error");
         }
