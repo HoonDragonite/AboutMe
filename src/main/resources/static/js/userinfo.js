@@ -41,9 +41,10 @@ function sendBaseInfo(){
         contentType: 'application/json',
         data: JSON.stringify(form),
         success: function(data) {
-            alert("success!");
+            console.log("success! uID is " + data);
         },
         error: function(error){
+            console.log("error : " + error);
             alert("error");
         }
     });

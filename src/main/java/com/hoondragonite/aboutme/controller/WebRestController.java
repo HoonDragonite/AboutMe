@@ -21,8 +21,9 @@ public class WebRestController {
     private UserInfoService userInfoService;
 
     @PostMapping("/userInfoSave") // RequestMapping + POST 방식
-    public void saveUserInfo(@RequestBody UserInfoSaveRequestDto dto, HttpSession httpSession){
+    public Long saveUserInfo(@RequestBody UserInfoSaveRequestDto dto, HttpSession httpSession){
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        Long uID = null;
 
         if(user != null) {
             System.out.println("사용자정보" + user.getUID());
@@ -30,7 +31,9 @@ public class WebRestController {
             System.out.println("사용자정보" + user.getName());
             System.out.println("사용자정보" + user.getPicture());
 
-            userInfoService.saveUserInfo(user.getUID(), dto);
+            uID = userInfoService.saveUserInfo(user.getUID(), dto);
         }
+
+        return uID;
     }
 }
