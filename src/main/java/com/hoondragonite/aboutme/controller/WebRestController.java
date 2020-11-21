@@ -6,21 +6,19 @@ import com.hoondragonite.aboutme.dto.UserInfoSaveRequestDto;
 import com.hoondragonite.aboutme.repository.UserInfoRepository;
 import com.hoondragonite.aboutme.service.UserInfoService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
 public class WebRestController {
 
-    private UserInfoRepository userInfoRepository; // Bean 객체를 생성자로 주입
     private UserInfoService userInfoService;
 
-    @PostMapping("/userInfoSave") // RequestMapping + POST 방식
+    @PostMapping("/baseInfoSave") // RequestMapping + POST
     public Long saveUserInfo(@RequestBody UserInfoSaveRequestDto dto, HttpSession httpSession){
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
         Long uID = null;

@@ -37,4 +37,5 @@ public class IndexController {
 
     @RequestMapping(value = "/privacy")
     public String privacy(Model model){ return "privacy"; }
+
 }

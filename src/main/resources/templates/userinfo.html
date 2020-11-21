@@ -48,33 +48,35 @@
                 <h2 class="desc-title">기본정보</h2>
                 <div class="desc-item">
                     <span class="item-name">이름(한글)</span>
-                    <input class="item-input" id="korName" name="korName">
+                    <input class="item-input" id="korName" name="korName" th:value="${userInfo.korName}">
                 </div>
                 <div class="desc-item">
                     <span class="item-name">이름(영어)</span>
-                    <input class="item-input" id="engName" name="engName">
+                    <input class="item-input" id="engName" name="engName" th:value="${userInfo.engName}">
                 </div>
                 <div class="desc-item">
                     <span class="item-name">이메일</span>
-                    <input class="item-input" id="email" name="email">
+                    <input class="item-input" id="email" name="email" th:value="${userInfo.email}">
                 </div>
                 <div class="desc-item">
                     <span class="item-name">연락처</span>
-                    <input class="item-input" id="contact" name="contact">
+                    <input class="item-input" id="contact" name="contact" th:value="${userInfo.contact}">
                 </div>
                 <div class="desc-item">
                     <span class="item-name">블로그</span>
-                    <input class="item-input" id="blog" name="blog">
+                    <input class="item-input" id="blog" name="blog" th:value="${userInfo.blog}">
                 </div>
                 <div class="desc-item">
                     <div class="item-name">자기소개</div>
-                    <input class="item-input" id="selfIntroduce" name="selfIntroduce" placeholder="최대 300자">
+                    <input class="item-input" id="selfIntroduce" name="selfIntroduce" placeholder="최대 300자" th:value="${userInfo.selfIntroduce}">
                 </div>
                 <button class="btn" id="baseInfoBtn">저장</button>
             </div>
         </div>
     </section>
     <!-- //section -->
+
+
     <!-- footer -->
     <footer>
         <div class="footer">

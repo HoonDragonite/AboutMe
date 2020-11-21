@@ -9,7 +9,7 @@ function loadEvents(){
 
 function sendBaseInfo(){
 
-    var form = {
+    let form = {
         korName : ($('#korName').val()),
         engName : $('#engName').val(),
         email : $('#email').val(),
@@ -18,25 +18,11 @@ function sendBaseInfo(){
         selfIntroduce : $('#selfIntroduce').val()
     };
 
-    console.log('View의 값 받아오기');
-    console.log($('#korName').val());
-    console.log($('#engName').val());
-    console.log($('#email').val());
-    console.log($('#contact').val());
-    console.log($('#blog').val());
-    console.log($('#selfIntroduce').val());
-    /*
-    ajax 테스트
-    $.ajax({
-        success: function(){
-            alert("hi!");
-        }
-    })
-    */
+    console.log('전송하는 값' + form);
 
     $.ajax({
         type: "POST",
-        url: "/userInfoSave",
+        url: "/baseInfoSave",
         dataType: "JSON",
         contentType: 'application/json',
         data: JSON.stringify(form),
