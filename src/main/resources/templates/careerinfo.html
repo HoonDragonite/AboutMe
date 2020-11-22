@@ -4,41 +4,35 @@
     <meta charset="UTF-8">
     <title>CareerInfo</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 <body>
 
 careerinfo
 <div class="container">
-    <!--<input type="button" id="addcareer" value="추가 +">
-    <input type="button" id="savecareer" value="저장">-->
     <button id="addcareer" value="추가">추가 + </button>
     <button id="savecareer" value="저장">저장 </button>
 
+
+    <div class="row">
+        <table id="cinfotable" border="1">
+            <th>경력사항</th>
+            <th>설명</th>
+            <th>시작날짜</th>
+            <th>완료날짜</th>
+            <th> - </th>
+            <tbody id="citbody">
+            </tbody>
+        </table>
+    </div>
+
 </div>
 
-<table id="careertable" border="1">
-    <th>경력사항</th>
-    <th>설명</th>
-    <th>시작날짜</th>
-    <th>완료날짜</th>
-    <th> - </th>
-   <!-- <tr class="text-center" th:each="clist : ${clist}">
-        <td scope="row">
-            <span th:text="${clist.cicarname}"></span>
-        </td>
-        <td>
-            <span th:text="${clist.cicomment}"></span>
-            <span th:text="${clist.cno}"></span>
-        </td>
-    </tr>-->
-
-   <!-- <tr>
-        <td colspan="4">
+<!--    <tr>
+        <td colspan="5">
             <input type="button" id="addcareer" value="추가 +">
         </td>
     </tr>-->
-
-</table>
 <script th:src="@{/js/careerinfo.js}"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </body>

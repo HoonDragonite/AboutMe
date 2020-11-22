@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,33 +28,59 @@ public class CareerinfoController {
         this.careerinfoService = careerinfoService;
     }
 
+    //목록조회
     @RequestMapping(value = "/cinfo")
-    public String clist(Model model, CareerinfoDto careerinfoDto){
-        //List<CareerinfoDto> cdtolist = careerinfoService.getCareerList();
-        //careerinfoDto.getCno();
-        //model.addAttribute("clist",cdtolist);
+    public String careerinfo(Model model){
+//        List cdtolist = new ArrayList();
+//        cdtolist = careerinfoService.getCareerList();
+//        model.addAttribute("clist",cdtolist);
+//        System.out.println("careerinfoService.getCareerList() > "+cdtolist);
+
         return "careerinfo";
     }
 
-    @RequestMapping(value = "/savecareer")
-    public Map<String,String> writeCareer(Model model,@RequestBody CareerinfoDto careerinfoDto) throws Exception{
-        System.out.println("careerinfoDto > "+careerinfoDto);
-        careerinfoService.saveCareer(careerinfoDto);
-        model.addAttribute("careerinfo",careerinfoDto.getCno());
-
-        Map<String,String> careerDto = new HashMap<>();
-        careerDto.put("cname",careerinfoDto.getCicarname());
-        careerDto.put("cment",careerinfoDto.getCicomment());
-        careerDto.put("sdate",careerinfoDto.getStartdate());
-        careerDto.put("edate",careerinfoDto.getEnddate());
-        System.out.println("dto > "+careerinfoDto);
-        System.out.println("careerDto > "+careerDto);
-        return careerDto;
+    @RequestMapping(value="getcareerlist")
+    @ResponseBody
+    public List<CareerinfoDto> getcareer(@RequestParam Map<String,Object> paramMap,Model model){
+        return careerinfoService.getCareerList();
     }
 
-    @RequestMapping(value = "/deletecareer")
-    public String deletecareer(@RequestParam(value = "cno",required = false) Long cno) throws Exception{
-        return "";
+    //저장
+    @PostMapping("/savecareer")
+    public String saveCareer(@RequestBody Careerinfo careerinfo) throws Exception{
+        careerinfoService.saveCareer(careerinfo);
+        return "careerinfo";
+    }
+
+    @RequestMapping("careermodify")
+    public String careermodify(@PathVariable("cno") Long cno)throws Exception{
+        System.out.println("careermodify cno > "+cno);
+
+        return "careermodify";
+    }
+
+
+
+    //경력수정
+    @RequestMapping("modifycareer")
+    @ResponseBody
+    public Long modifycareer(Careerinfo careerinfo, @PathVariable("cno") Long cno)throws Exception{
+        //careerinfoService.modifyCareer(careerinfo);
+        System.out.println("modifycareer cno > "+cno);
+
+        return careerinfoService.modifyCareer(careerinfo);
+        //return "careerinfo";
+    }
+
+
+
+    //경력삭제
+    @RequestMapping(value = "/deletecareer/{cno}")
+    @ResponseBody
+    public String deletecareer(@PathVariable("cno") Long cno) throws Exception{
+        System.out.println("deletecareer cno > "+cno);
+        careerinfoService.deleteCareer(cno);
+        return "careerinfo";
     }
 
 

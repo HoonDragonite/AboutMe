@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>savecareer</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <button class='cinfo' value='목록' >목록</button>
+    <button id="savecareer" value="저장">저장 </button>
+<!--
+    <button class='cmodify' value='수정' >수정</button>
+-->
+    <button class='cdel' value='삭제' >삭제</button>
+
+
+    <table id="csavetable" border="1">
+        <th>경력사항</th>
+        <th>설명</th>
+        <th>시작날짜</th>
+        <th>완료날짜</th>
+        <th> - </th>
+
+    </table>
+
+</div>
+<script th:src="@{/js/careerinfo.js}"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</body>
+</html>

@@ -3,38 +3,24 @@ package com.hoondragonite.aboutme.config.auth.dto;
 import com.hoondragonite.aboutme.domain.careerinfo.Careerinfo;
 import lombok.*;
 
+import java.io.Serializable;
+
 @Getter
 @ToString
 @NoArgsConstructor
-public class CareerinfoDto {
+public class CareerinfoDto implements Serializable {
     private Long cno;
     private String cicarname;
     private String cicomment;
     private String startdate;
     private String enddate;
 
-    public Careerinfo toEntity(){
-        Careerinfo build = Careerinfo.builder()
-                .cno(cno)
-                .cicarname(cicarname)
-                .cicomment(cicomment)
-                .startdate(startdate)
-                .enddate(enddate)
-                .build();
-        return build;
-    }
-
-    //@Builder
     public CareerinfoDto(Careerinfo careerinfo){
-        this.cno = cno;
-        this.cicarname = cicarname;
-        this.cicomment = cicomment;
-        this.startdate = startdate;
-        this.enddate = enddate;
+        this.cno = careerinfo.getCno();
+        this.cicarname = careerinfo.getCicarname();
+        this.cicomment = careerinfo.getCicomment();
+        this.startdate = careerinfo.getStartdate();
+        this.enddate = careerinfo.getEnddate();
     }
-
-
-
-
 
 }
