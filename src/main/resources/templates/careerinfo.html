@@ -4,50 +4,35 @@
     <meta charset="UTF-8">
     <title>CareerInfo</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 <body>
 
 careerinfo
 <div class="container">
-    <!--<input type="button" id="addcareer" value="추가 +">
-    <input type="button" id="savecareer" value="저장">-->
-<!--
     <button id="addcareer" value="추가">추가 + </button>
--->
     <button id="savecareer" value="저장">저장 </button>
+
+
+    <div class="row">
+        <table id="cinfotable" border="1">
+            <th>경력사항</th>
+            <th>설명</th>
+            <th>시작날짜</th>
+            <th>완료날짜</th>
+            <th> - </th>
+            <tbody id="citbody">
+            </tbody>
+        </table>
+    </div>
 
 </div>
 
-<table id="careertable" border="1">
-    <th>경력사항</th>
-    <th>설명</th>
-    <th>시작날짜</th>
-    <th>완료날짜</th>
-    <th> - </th>
-
-
-    <tr class="text-center" th:each="clist : ${clist}">
-        <td scope="row" th:text="${clist.cicarname}">
-        </td>
-        <td th:text="${clist.cicomment}">
-        </td>
-        <td th:text="${clist.startdate}">
-        </td>
-        <td th:text="${clist.enddate}">
-        </td>
-        <td class="cno" th:block="${clist.cno}">
-            <button class='cmodify' value='수정'>수정</button>
-            <button class='cdel' value='삭제'>삭제</button>
-        </td>
-    </tr>
-
-    <tr>
+<!--    <tr>
         <td colspan="5">
             <input type="button" id="addcareer" value="추가 +">
         </td>
-    </tr>
-
-</table>
+    </tr>-->
 <script th:src="@{/js/careerinfo.js}"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </body>

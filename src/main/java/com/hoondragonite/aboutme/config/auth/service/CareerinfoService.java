@@ -42,7 +42,7 @@ public class CareerinfoService {
         return cdtolist;
     }
 
-    public Long updateCareer(Careerinfo careerinfo){
+    public Long modifyCareer(Careerinfo careerinfo){
         return careerinfoRepository.save(careerinfo).getCno();
     }
 

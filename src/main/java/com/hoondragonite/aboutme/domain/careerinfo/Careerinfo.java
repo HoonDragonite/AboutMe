@@ -2,6 +2,7 @@ package com.hoondragonite.aboutme.domain.careerinfo;
 
 import com.hoondragonite.aboutme.config.auth.dto.CareerinfoDto;
 import com.hoondragonite.aboutme.domain.user.User;
+import com.hoondragonite.aboutme.domain.userinfo.UserInfo;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @NoArgsConstructor
+@Table
 @EntityListeners(AuditingEntityListener.class)
 public class Careerinfo extends CareerinfoDto{
     @Id
@@ -40,9 +42,8 @@ public class Careerinfo extends CareerinfoDto{
     @ColumnDefault("-")
     private String enddate;
 
-//    @ManyToOne
-//    @JoinColumn(name="user_info_uid",referencedColumnName="")
-//    private User user;
+//    @OneToOne(mappedBy = "uid")
+//    private UserInfo uid;
 
     @Builder
     public Careerinfo(Long cno, String cicarname, String cicomment, String startdate, String enddate){

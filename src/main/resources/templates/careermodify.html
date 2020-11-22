@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>careermodify</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+careermodify
+<div class="container" th:object="${clist}">
+    <input th:field="*{cno}" type="hidden"  >
+<table class="cmtable">
+    <tbody id="cmtbody">
+    <th>번호</th>
+    <th>경력사항</th>
+    <th>설명</th>
+    <th>시작날짜</th>
+    <th>완료날짜</th>
+
+    <tr>
+        <th>경력사항</th>
+        <td><input id="cmcname" name="writer" class="form-control"/></td>
+    </tr>
+    <tr>
+        <th>설명</th>
+        <td><textarea id="cmcment" name="content" cols="10" rows="5"
+                      class="form-control"></textarea></td>
+    </tr>
+    <tr>
+        <th>시작날짜</th>
+        <td><input id="cmsdate" /></td>
+    </tr>
+    <tr>
+        <th>완료날짜</th>
+        <td><input id="cmedate" /></td>
+    </tr>
+    </tbody>
+
+</table>
+
+    <button type="button" id="listbtn" name="listbtn">목록으로</button>
+    <button type="button" id="modifybtn" name="modifybtn">확인</button>
+
+
+</div>
+<script th:src="@{/js/careerinfo.js}"></script>
+<script th:src="@{/js/careermodify.js}"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</body>
+</html>
