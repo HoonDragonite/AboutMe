@@ -265,7 +265,7 @@ function cmCallback(mobj, obj) {
 
 
 function modicareer(mo) {
-    var cno = mo;
+    var cno = mo+1;
     var cname = $('#cmcname').val();
     var cment = $('#cmcment').val();
     var sdate = $('#cmsdate').val();
@@ -282,7 +282,7 @@ function modicareer(mo) {
 
 
     $.ajax({
-        url: "/modifycareer",
+        url: "/modifycareer/"+cno,
         dataType: "JSON",
         type: "POST",
         data: JSON.stringify(objParam),
@@ -294,6 +294,8 @@ function modicareer(mo) {
             location.href = "/cinfo";
         },
         error: function (xhr, status, error) {
+            location.href = "/cinfo";
+            // alert(error);
         }
 
     });

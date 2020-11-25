@@ -62,7 +62,7 @@ public class CareerinfoController {
 
 
     //경력수정
-    @RequestMapping("/modifycareer")
+    @RequestMapping("/modifycareer/{cno}")
     //@ResponseBody
     public String modifycareer(@RequestBody Careerinfo careerinfo,@PathVariable("cno") Long cno)throws Exception{
         careerinfoService.modifyCareer(careerinfo);
