@@ -52,24 +52,25 @@ public class CareerinfoController {
         return "careerinfo";
     }
 
-    @RequestMapping("careermodify")
+    @RequestMapping("/careermodify")
     public String careermodify(@PathVariable("cno") Long cno)throws Exception{
         System.out.println("careermodify cno > "+cno);
 
-        return "careermodify";
+        return "careerinfo";
     }
 
 
 
     //경력수정
-    @RequestMapping("modifycareer")
-    @ResponseBody
-    public Long modifycareer(Careerinfo careerinfo, @PathVariable("cno") Long cno)throws Exception{
-        //careerinfoService.modifyCareer(careerinfo);
+    @RequestMapping("/modifycareer")
+    //@ResponseBody
+    public String modifycareer(@RequestBody Careerinfo careerinfo,@PathVariable("cno") Long cno)throws Exception{
+        careerinfoService.modifyCareer(careerinfo);
         System.out.println("modifycareer cno > "+cno);
+        System.out.println("modifycareer careerinfo > "+careerinfo);
 
-        return careerinfoService.modifyCareer(careerinfo);
-        //return "careerinfo";
+         //return careerinfoService.modifyCareer(careerinfo);
+        return "careerinfo";
     }
 
 
