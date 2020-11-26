@@ -5,17 +5,21 @@ import com.hoondragonite.aboutme.domain.userinfo.UserInfo;
 import com.hoondragonite.aboutme.dto.UserInfoSaveRequestDto;
 import com.hoondragonite.aboutme.repository.UserInfoRepository;
 import com.hoondragonite.aboutme.service.UserInfoService;
+// import com.hoondragonite.aboutme.util.S3Uploader;
 import lombok.AllArgsConstructor;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
 public class WebRestController {
 
+    //private final S3Uploader s3Uploader;
     private UserInfoService userInfoService;
 
     @PostMapping("/baseInfoSave") // RequestMapping + POST
@@ -34,4 +38,12 @@ public class WebRestController {
 
         return uID;
     }
+    /*
+    @PostMapping("/profileUpload")
+    @ResponseBody
+    public String upload(@RequestParam("data") MultipartFile multipartFile) throws IOException {
+        return s3Uploader.upload(multipartFile, "abtme_profile");
+    }
+
+     */
 }

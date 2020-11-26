@@ -15,6 +15,43 @@
     font-size: 1.2rem;
     width: 100px;
 }
+.text-align-center{
+    text-align: center;
+}
+.profile-area{
+    display: flex;
+    flex-direction: column;
+    flex-wrap:nowrap;
+    align-items: center;
+}
+.profile-image{
+    display: inline-block;
+    position: center;
+    width: 350px;
+    height: 350px;
+    min-width: 150px;
+    min-height: 150px;
+}
+.profile-name{
+    display: inline-block;
+}
+.profile-btn{
+    width: 180px;
+    height: 50px;
+    border: 0px;
+    border-radius: 50px;
+    background-color: rgb(45, 70, 185);
+    color: rgb(255, 255, 255);
+    margin: 15px;
+    font-size: 1.0em;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    touch-action: manipulation;
+}
 .item-input{
     width: 250px;
     height: 30px;

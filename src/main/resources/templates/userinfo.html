@@ -46,6 +46,12 @@
             </div>
             <div class="desc-area">
                 <h2 class="desc-title">기본정보</h2>
+                <div class="desc-item profile-area">
+                    <img src="../static/image/empty.png" class="profile-image" id="profileImage">
+                    <span>
+                        <button class="btn">업로드</button>
+                    </span>
+                </div>
                 <div class="desc-item">
                     <span class="item-name">이름(한글)</span>
                     <input class="item-input" id="korName" name="korName" th:value="${userInfo.korName}">
