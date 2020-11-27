@@ -38,9 +38,16 @@ public class WebRestController {
 
     @PostMapping("/profileUpload")
     @ResponseBody
-    public String uploadImage(@RequestParam("data") MultipartFile multipartFile) throws IOException {
+    public String uploadImage(@RequestParam("data") MultipartFile multipartFile, HttpSession httpSession) throws IOException {
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        Long uID = null;
+
+        if(user != null) {
+            uID = user.getUID();
+        }
+
         System.out.println("uploadImage");
-        return s3Service.upload(multipartFile, "abtme_profile");
+        return s3Service.upload(multipartFile, "abtme_profile", uID);
     }
 
 }

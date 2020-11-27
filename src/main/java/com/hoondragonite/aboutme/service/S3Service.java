@@ -46,24 +46,28 @@ public class S3Service {
                 .build();
     }
 
-    public String upload(MultipartFile multipartFile, String dirName) throws IOException {
+    // Call Convert Function
+    public String upload(MultipartFile multipartFile, String dirName, Long uID) throws IOException {
         File uploadFile = convert(multipartFile)
                 .orElseThrow(() -> new IllegalArgumentException("MultipartFile -> File로 전환이 실패했습니다."));
-        return upload(uploadFile, dirName);
+        return upload(uploadFile, dirName, uID);
     }
 
-    private String upload(File uploadFile, String dirName) {
-        String fileName = dirName + "/" + uploadFile.getName();
+    // File Naming And Call putS3 Function
+    private String upload(File uploadFile, String dirName, Long uID) {
+        String fileName = dirName + "/" + Long.toString(uID) + "_image";
         String uploadImageUrl = putS3(uploadFile, fileName);
         removeNewFile(uploadFile);
         return uploadImageUrl;
     }
 
+    // Put File To S3 Bucket
     private String putS3(File uploadFile, String fileName) {
         s3Client.putObject(new PutObjectRequest(bucket, fileName, uploadFile).withCannedAcl(CannedAccessControlList.PublicRead));
         return s3Client.getUrl(bucket, fileName).toString();
     }
 
+    //Remove ConvertedFile
     private void removeNewFile(File targetFile) {
         if (targetFile.delete()) {
             System.out.println("파일이 삭제되었습니다.");
@@ -72,6 +76,7 @@ public class S3Service {
         }
     }
 
+    // Convert MultipartFile To File
     private Optional<File> convert(MultipartFile file) throws IOException {
         File convertFile = new File(file.getOriginalFilename());
         if(convertFile.createNewFile()) {
