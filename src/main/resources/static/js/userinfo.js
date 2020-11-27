@@ -6,12 +6,14 @@ function loadEvents(){
         baseInfoBtn.addEventListener('click', save);
     }
 
-    /*
-    const uploadImageBtn = document.getElementById('uploadImageBtn');
-    if (uploadImageBtn){
-        uploadImageBtn.addEventListener('click', uploadImage);
+    const clickInputBtn = document.getElementById('clickInputBtn');
+    if (clickInputBtn){
+        clickInputBtn.addEventListener('click', clickInput);
     }
-    */
+}
+
+function clickInput(){
+    $('#imageInput').click();
 }
 
 function save(){
