@@ -3,25 +3,33 @@ loadEvents();
 function loadEvents(){
     const baseInfoBtn = document.getElementById('baseInfoBtn');
     if (baseInfoBtn){
-        baseInfoBtn.addEventListener('click', sendBaseInfo);
+        baseInfoBtn.addEventListener('click', save);
     }
 
+    /*
     const uploadImageBtn = document.getElementById('uploadImageBtn');
     if (uploadImageBtn){
         uploadImageBtn.addEventListener('click', uploadImage);
     }
+    */
+}
+
+function save(){
+    uploadImage();
+    sendBaseInfo();
 }
 
 function sendBaseInfo(){
     $('#baseInfoBtn').html("Loading...");
-
+    console.log($('#image').attr("src"));
     let form = {
         korName : ($('#korName').val()),
         engName : $('#engName').val(),
         email : $('#email').val(),
         contact : $('#contact').val(),
         blog : $('#blog').val(),
-        selfIntroduce : $('#selfIntroduce').val()
+        selfIntroduce : $('#selfIntroduce').val(),
+        image : $('#image').attr("src")
     };
 
     console.log('전송하는 값' + form);
@@ -46,7 +54,9 @@ function sendBaseInfo(){
 }
 
 function uploadImage() {
-        var file = $('#img')[0].files[0];
+        $('#baseInfoBtn').html("Loading...");
+
+        var file = $('#imageInput')[0].files[0];
         var formData = new FormData();
         formData.append('data', file);
         console.log(formData);
@@ -59,7 +69,7 @@ function uploadImage() {
             processData: false,
             contentType: false
         }).done(function (data) {
-            $('#profileImage').attr("src", data);
+            $('#image').attr("src", data);
             console.log('uploadImage 성공');
         }).fail(function (error) {
             alert(error);

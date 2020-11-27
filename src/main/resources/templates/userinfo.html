@@ -47,11 +47,11 @@
             <div class="desc-area">
                 <h2 class="desc-title">기본정보</h2>
                 <div class="desc-item profile-area">
-                    <img src="../static/image/empty.png" class="profile-image" id="profileImage">
+                    <img th:src="${userInfo.image}" class="profile-image" id="image">
                     <span>
-                        <label for="img">파일 업로드</label>
-                        <input type="file" id="img">
-                        <button class="btn" id="uploadImageBtn">업로드</button>
+                        <label for="imageInput">파일 업로드</label>
+                        <input type="file" id="imageInput">
+                        <button class="btn" id="uploadImageBtn">불러오기(예정)</button>
                     </span>
                 </div>
                 <div class="desc-item">

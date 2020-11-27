@@ -24,37 +24,16 @@ public class UserInfoSaveRequestDto {
     private String contact;
     private String blog;
     private String selfIntroduce;
+    private String image;
 
     @Builder
-    public UserInfoSaveRequestDto(String korName, String engName, String email,String contact, String blog, String selfIntroduce){
+    public UserInfoSaveRequestDto(String korName, String engName, String email,String contact, String blog, String selfIntroduce, String image){
         this.korName = korName;
         this.engName = engName;
         this.email = email;
         this.contact = contact;
         this.blog = blog;
         this.selfIntroduce = selfIntroduce;
+        this.image = image;
     }
-    /*
-    public UserInfo toEntity(){
-
-        System.out.println("toEntity*******************");
-        System.out.println(korName);
-        System.out.println(engName);
-        System.out.println(email);
-        System.out.println(contact);
-        System.out.println(blog);
-        System.out.println(selfIntroduce);
-        System.out.println("toEntity 끝*******************");
-
-
-        return UserInfo.builder()
-                .korName(korName)
-                .engName(engName)
-                .email(email)
-                .contact(contact)
-                .blog(blog)
-                .selfIntroduce(selfIntroduce)
-                .build();
-    }
-     */
 }

@@ -25,27 +25,30 @@ public class UserInfo extends BaseTimeEntity {
     private String blog;
     @Column(length = 300)
     private String selfIntroduce;
-
+    @Column(length = 200)
+    private String image;
     @Builder
-    public UserInfo(String korName, String engName, String email, String contact, String blog, String selfIntroduce) {
+    public UserInfo(String korName, String engName, String email, String contact, String blog, String selfIntroduce, String image) {
         this.korName = korName;
         this.engName = engName;
         this.email = email;
         this.contact = contact;
         this.blog = blog;
         this.selfIntroduce = selfIntroduce;
+        this.image = image;
     }
 
     public void setUID(Long uID){
         this.uID = uID;
     }
 
-    public void updateUserInfo(String korName, String engName, String email, String contact, String blog, String selfIntroduce){
+    public void updateUserInfo(String korName, String engName, String email, String contact, String blog, String selfIntroduce, String image){
         this.korName = korName;
         this.engName = engName;
         this.email = email;
         this.contact = contact;
         this.blog = blog;
         this.selfIntroduce = selfIntroduce;
+        this.image = image;
     }
 }

@@ -25,10 +25,8 @@ public class WebRestController {
         Long uID = null;
 
         if(user != null) {
-            System.out.println("사용자정보" + user.getUID());
-            System.out.println("사용자정보" + user.getEmail());
-            System.out.println("사용자정보" + user.getName());
-            System.out.println("사용자정보" + user.getPicture());
+            System.out.println("Save Image" + dto.getImage());
+
 
             uID = userInfoService.saveUserInfo(user.getUID(), dto);
         }
@@ -46,7 +44,6 @@ public class WebRestController {
             uID = user.getUID();
         }
 
-        System.out.println("uploadImage");
         return s3Service.upload(multipartFile, "abtme_profile", uID);
     }
 

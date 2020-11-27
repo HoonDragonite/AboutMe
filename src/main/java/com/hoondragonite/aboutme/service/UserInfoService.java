@@ -29,14 +29,14 @@ public class UserInfoService {
         Optional<UserInfo> toSave = findByuID(uID);
         if(toSave.isPresent()){ // 정보만 Update
             UserInfo userInfo = toSave.get();
-            userInfo.updateUserInfo(dto.getKorName(), dto.getEngName(), dto.getEmail(), dto.getContact(), dto.getBlog(), dto.getSelfIntroduce());
+            userInfo.updateUserInfo(dto.getKorName(), dto.getEngName(), dto.getEmail(), dto.getContact(), dto.getBlog(), dto.getSelfIntroduce(), dto.getImage());
             userInfoRepository.save(userInfo);
             return userInfo.getUID();
         }
         else{ // 새로 생성하여 Insert
             UserInfo newUserInfo = new UserInfo();
             newUserInfo.setUID(uID);
-            newUserInfo.updateUserInfo(dto.getKorName(), dto.getEngName(), dto.getEmail(), dto.getContact(), dto.getBlog(), dto.getSelfIntroduce());
+            newUserInfo.updateUserInfo(dto.getKorName(), dto.getEngName(), dto.getEmail(), dto.getContact(), dto.getBlog(), dto.getSelfIntroduce(), dto.getImage());
             em.persist(newUserInfo);
             userInfoRepository.save(newUserInfo);
             return newUserInfo.getUID();

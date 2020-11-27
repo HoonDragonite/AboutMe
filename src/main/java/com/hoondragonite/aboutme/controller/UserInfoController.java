@@ -30,20 +30,9 @@ public class UserInfoController {
         Optional<UserInfo> foundUserInfo = userInfoService.findByuID(user.getUID());
         if (foundUserInfo.isPresent()){
             UserInfo userInfo = foundUserInfo.get();
-            System.out.println("찾은 사용자정보 : " + userInfo.getUID());
-            System.out.println("찾은 사용자정보 : " + userInfo.getKorName());
-            System.out.println("찾은 사용자정보 : " + userInfo.getEngName());
-            System.out.println("찾은 사용자정보 : " + userInfo.getEmail());
-            System.out.println("찾은 사용자정보 : " + userInfo.getContact());
-            System.out.println("찾은 사용자정보 : " + userInfo.getBlog());
-            System.out.println("찾은 사용자정보 : " + userInfo.getSelfIntroduce());
             model.addAttribute(userInfo);
         }
 
         return "userinfo";
     }
-    /*
-
-
-     */
 }
