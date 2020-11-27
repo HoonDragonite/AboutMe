@@ -1,34 +1,54 @@
-/*
-package com.hoondragonite.aboutme.util;
+package com.hoondragonite.aboutme.service;
 
-import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Optional;
 
-@Slf4j
-@RequiredArgsConstructor
-@Component
-public class S3Uploader {
+@NoArgsConstructor
+@Service
+public class S3Service {
 
-    private final AmazonS3Client amazonS3Client;
+    private AmazonS3 s3Client;
+
+    @Value("${cloud.aws.credentials.access-key}")
+    private String accessKey;
+
+    @Value("${cloud.aws.credentials.secret-key}")
+    private String secretKey;
 
     @Value("${cloud.aws.s3.bucket}")
     private String bucket;
 
+    @Value("${cloud.aws.region.static}")
+    private String region;
+
+    @PostConstruct
+    public void setS3Client() {
+        AWSCredentials credentials = new BasicAWSCredentials(this.accessKey, this.secretKey);
+
+        s3Client = AmazonS3ClientBuilder.standard()
+                .withCredentials(new AWSStaticCredentialsProvider(credentials))
+                .withRegion(this.region)
+                .build();
+    }
+
     public String upload(MultipartFile multipartFile, String dirName) throws IOException {
         File uploadFile = convert(multipartFile)
                 .orElseThrow(() -> new IllegalArgumentException("MultipartFile -> File로 전환이 실패했습니다."));
-
         return upload(uploadFile, dirName);
     }
 
@@ -40,15 +60,15 @@ public class S3Uploader {
     }
 
     private String putS3(File uploadFile, String fileName) {
-        amazonS3Client.putObject(new PutObjectRequest(bucket, fileName, uploadFile).withCannedAcl(CannedAccessControlList.PublicRead));
-        return amazonS3Client.getUrl(bucket, fileName).toString();
+        s3Client.putObject(new PutObjectRequest(bucket, fileName, uploadFile).withCannedAcl(CannedAccessControlList.PublicRead));
+        return s3Client.getUrl(bucket, fileName).toString();
     }
 
     private void removeNewFile(File targetFile) {
         if (targetFile.delete()) {
-            log.info("파일이 삭제되었습니다.");
+            System.out.println("파일이 삭제되었습니다.");
         } else {
-            log.info("파일이 삭제되지 못했습니다.");
+            System.out.println("파일이 삭제되지 못했습니다.");
         }
     }
 
@@ -64,4 +84,3 @@ public class S3Uploader {
         return Optional.empty();
     }
 }
-*/

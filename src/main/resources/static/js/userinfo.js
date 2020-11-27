@@ -5,6 +5,11 @@ function loadEvents(){
     if (baseInfoBtn){
         baseInfoBtn.addEventListener('click', sendBaseInfo);
     }
+
+    const uploadImageBtn = document.getElementById('uploadImageBtn');
+    if (uploadImageBtn){
+        uploadImageBtn.addEventListener('click', uploadImage);
+    }
 }
 
 function sendBaseInfo(){
@@ -25,11 +30,12 @@ function sendBaseInfo(){
         type: "POST",
         url: "/baseInfoSave",
         dataType: "JSON",
+        async: false,
         contentType: 'application/json',
         data: JSON.stringify(form),
         success: function(data) {
             $('#baseInfoBtn').html("저장");
-            console.log("success! uID is " + data);
+            console.log("sendBaseInfo 성공! uID is " + data);
         },
         error: function(error){
             $('#baseInfoBtn').html("저장");
@@ -38,3 +44,24 @@ function sendBaseInfo(){
         }
     });
 }
+
+function uploadImage() {
+        var file = $('#img')[0].files[0];
+        var formData = new FormData();
+        formData.append('data', file);
+        console.log(formData);
+        console.log(formData.get('data'.toString()));
+        $.ajax({
+            type: 'POST',
+            url: '/profileUpload',
+            data: formData,
+            async: false,
+            processData: false,
+            contentType: false
+        }).done(function (data) {
+            $('#profileImage').attr("src", data);
+            console.log('uploadImage 성공');
+        }).fail(function (error) {
+            alert(error);
+        })
+    }
