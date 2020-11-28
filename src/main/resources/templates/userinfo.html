@@ -44,7 +44,7 @@
             <div class="title-area">
                 <h1 class="title" th:text="${userName} + '의 사용자정보'"></h1>
             </div>
-            <div class="desc-area">
+            <div class="desc-area" id="baseInfoArea">
                 <h2 class="desc-title">기본정보</h2>
                 <div class="desc-item profile-area">
                     <img th:src="${userInfo.image}" class="profile-image" id="image">
@@ -78,6 +78,34 @@
                     <input class="item-input" id="selfIntroduce" name="selfIntroduce" placeholder="최대 300자" th:value="${userInfo.selfIntroduce}">
                 </div>
                 <button class="btn" id="baseInfoBtn">저장</button>
+            </div>
+
+            <div class="desc-area" id="pjtArea">
+                <h2 class="desc-title">프로젝트</h2>
+                <table class="pjt-table">
+                    <tr id="pjt-item"><!--tr을 th:each로 반복할 것임 -->
+                        <td class="pjt-td">
+                            <input class="pjt-name" name="pjtName" type="text" placeholder="프로젝트명">
+                            <input class="pjt-team" name="pjtTeam" type="text" placeholder="팀명">
+                            <input class="pjt-start-date" name="pjtStartDate" type="text" placeholder="시작일자">
+                            <input class="pjt-end-date" name="pjtEndDate" type="text" placeholder="종료일자">
+                        </td>
+                        <td class="pjt-td">
+                            <input class="pjt-desc" name="pjtDesc" type="text" placeholder="내용">
+                        </td>
+                        <td class="pjt-td">
+                            <input class="pjt-tech-stack" name="pjtTechStack" type="text" placeholder="기술스택">
+                        </td>
+                        <td class="pjt-td">
+                            <input class="pjt-main-tech" name="pjtMainTech" type="text" placeholder="주요기술">
+                        </td>
+                        <td class="pjt-td">
+                            <input class="pjt-role" name="pjtRole" type="text" placeholder="맡은역할">
+                        </td>
+                    </tr>
+                </table>
+                <button class="add-btn" id="pjtAddBtn">추가</button>
+                <button class="btn" id="pjtSaveBtn">저장</button>
             </div>
         </div>
     </section>

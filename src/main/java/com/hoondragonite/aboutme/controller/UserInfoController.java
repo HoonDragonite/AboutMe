@@ -29,6 +29,7 @@ public class UserInfoController {
 
         Optional<UserInfo> foundUserInfo = userInfoService.findByuID(user.getUID());
         if (foundUserInfo.isPresent()){
+            System.out.println("컨트롤러 : 모델에 userInfo 전달");
             UserInfo userInfo = foundUserInfo.get();
             model.addAttribute(userInfo);
         }
