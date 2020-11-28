@@ -10,11 +10,27 @@ function loadEvents(){
     if (clickInputBtn){
         clickInputBtn.addEventListener('click', clickInput);
     }
+
+    const imageInput = document.getElementById('imageInput');
+    if(imageInput){
+        imageInput.addEventListener('change', showLoadedImage);
+    }
 }
 
 function clickInput(){
     $('#imageInput').click();
 }
+
+function showLoadedImage(){
+    const imageInput = document.getElementById('imageInput');
+    const fReader = new FileReader();
+
+    fReader.readAsDataURL(imageInput.files[0]);
+    fReader.onloadend = function(Event){
+        $('#image').attr("src", Event.target.result);
+    }
+}
+
 
 function save(){
     uploadImage();
@@ -44,11 +60,11 @@ function sendBaseInfo(){
         contentType: 'application/json',
         data: JSON.stringify(form),
         success: function(data) {
-            $('#baseInfoBtn').html("저장");
+            $('#baseInfoBtn').html("성공");
             console.log("sendBaseInfo 성공! uID is " + data);
         },
         error: function(error){
-            $('#baseInfoBtn').html("저장");
+            $('#baseInfoBtn').html("실패");
             console.log("error : " + error);
             alert("error");
         }
