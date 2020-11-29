@@ -1,7 +1,9 @@
 package com.hoondragonite.aboutme.controller;
 
 import com.hoondragonite.aboutme.config.auth.dto.SessionUser;
+import com.hoondragonite.aboutme.dto.PjtSaveRequestDto;
 import com.hoondragonite.aboutme.dto.UserInfoSaveRequestDto;
+import com.hoondragonite.aboutme.service.PjtService;
 import com.hoondragonite.aboutme.service.UserInfoService;
 // import com.hoondragonite.aboutme.util.S3Uploader;
 import com.hoondragonite.aboutme.service.S3Service;
@@ -18,15 +20,15 @@ public class WebRestController {
 
     private S3Service s3Service;
     private UserInfoService userInfoService;
+    private PjtService pjtService;
 
-    @PostMapping("/baseInfoSave") // RequestMapping + POST
+    @PostMapping("/baseInfoSave")
     public Long saveUserInfo(@RequestBody UserInfoSaveRequestDto dto, HttpSession httpSession){
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
         Long uID = null;
 
         if(user != null) {
             System.out.println("Save Image" + dto.getImage());
-
 
             uID = userInfoService.saveUserInfo(user.getUID(), dto);
         }
@@ -46,21 +48,16 @@ public class WebRestController {
 
         return s3Service.upload(multipartFile, "abtme_profile", uID);
     }
-    /*
-    @PostMapping("/pjtSave") // RequestMapping + POST
-    public Long pjtSave(@RequestBody UserInfoSaveRequestDto dto, HttpSession httpSession){
+
+    @PostMapping("/pjtSave")
+    public Long pjtSave(@RequestBody PjtSaveRequestDto dto, HttpSession httpSession){
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
         Long uID = null;
 
         if(user != null) {
-            System.out.println("Save Image" + dto.getImage());
-
-
-            uID = userInfoService.saveUserInfo(user.getUID(), dto);
+            uID = pjtService.savePjt(user.getUID(), dto);
         }
 
         return uID;
     }
-
-     */
 }

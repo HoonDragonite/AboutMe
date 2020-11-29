@@ -14,7 +14,7 @@ public class Project extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long pjtSeq;
-    @Column(nullable = false)
+    @Column
     private Long uID;
     @Column(length = 50)
     private String pjtName;
@@ -35,6 +35,18 @@ public class Project extends BaseTimeEntity {
 
     @Builder
     public Project(Long uID, String pjtName, String pjtTeam, String pjtStartDate, String pjtEndDate, String pjtDesc, String pjtTechStack, String pjtMainTech, String pjtRole) {
+        this.uID = uID;
+        this.pjtName = pjtName;
+        this.pjtTeam = pjtTeam;
+        this.pjtStartDate = pjtStartDate;
+        this.pjtEndDate = pjtEndDate;
+        this.pjtDesc = pjtDesc;
+        this.pjtTechStack = pjtTechStack;
+        this.pjtMainTech = pjtMainTech;
+        this.pjtRole = pjtRole;
+    }
+
+    public void updateProject(Long uID, String pjtName, String pjtTeam, String pjtStartDate, String pjtEndDate, String pjtDesc, String pjtTechStack, String pjtMainTech, String pjtRole) {
         this.uID = uID;
         this.pjtName = pjtName;
         this.pjtTeam = pjtTeam;

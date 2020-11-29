@@ -61,7 +61,7 @@ function uploadImage() {
         $('#image').attr("src", data);
         console.log('uploadImage 성공');
     }).fail(function (error) {
-        alert(error);
+        console.log(error);
     })
 }
 
