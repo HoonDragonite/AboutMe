@@ -46,5 +46,21 @@ public class WebRestController {
 
         return s3Service.upload(multipartFile, "abtme_profile", uID);
     }
+    /*
+    @PostMapping("/pjtSave") // RequestMapping + POST
+    public Long pjtSave(@RequestBody UserInfoSaveRequestDto dto, HttpSession httpSession){
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        Long uID = null;
 
+        if(user != null) {
+            System.out.println("Save Image" + dto.getImage());
+
+
+            uID = userInfoService.saveUserInfo(user.getUID(), dto);
+        }
+
+        return uID;
+    }
+
+     */
 }

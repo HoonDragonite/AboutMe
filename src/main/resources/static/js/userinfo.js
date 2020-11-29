@@ -15,6 +15,11 @@ function loadEvents(){
     if(imageInput){
         imageInput.addEventListener('change', showLoadedImage);
     }
+
+    const pjtSaveBtn = document.getElementById('pjtSaveBtn');
+    if (pjtSaveBtn){
+        pjtSaveBtn.addEventListener('click', sendProject);
+    }
 }
 
 function clickInput(){
@@ -35,6 +40,29 @@ function showLoadedImage(){
 function save(){
     uploadImage();
     sendBaseInfo();
+}
+
+function uploadImage() {
+    $('#baseInfoBtn').html("Loading...");
+
+    var file = $('#imageInput')[0].files[0];
+    var formData = new FormData();
+    formData.append('data', file);
+    console.log(formData);
+    console.log(formData.get('data'.toString()));
+    $.ajax({
+        type: 'POST',
+        url: '/profileUpload',
+        data: formData,
+        async: false,
+        processData: false,
+        contentType: false
+    }).done(function (data) {
+        $('#image').attr("src", data);
+        console.log('uploadImage 성공');
+    }).fail(function (error) {
+        alert(error);
+    })
 }
 
 function sendBaseInfo(){
@@ -71,25 +99,38 @@ function sendBaseInfo(){
     });
 }
 
-function uploadImage() {
-        $('#baseInfoBtn').html("Loading...");
+function sendProject(){
+    $('#pjtSaveBtn').html("Loading...");
 
-        var file = $('#imageInput')[0].files[0];
-        var formData = new FormData();
-        formData.append('data', file);
-        console.log(formData);
-        console.log(formData.get('data'.toString()));
-        $.ajax({
-            type: 'POST',
-            url: '/profileUpload',
-            data: formData,
-            async: false,
-            processData: false,
-            contentType: false
-        }).done(function (data) {
-            $('#image').attr("src", data);
-            console.log('uploadImage 성공');
-        }).fail(function (error) {
-            alert(error);
-        })
-    }
+    let pjtForm = {
+        pjtSeq : ($('#pjtSeq').val()),
+        pjtName : $('#pjtName').val(),
+        pjtTeam : $('#pjtTeam').val(),
+        pjtStartDate : $('#pjtStartDate').val(),
+        pjtEndDate : $('#pjtEndDate').val(),
+        pjtDesc : $('#pjtDesc').val(),
+        pjtTechStack : $('#pjtTechStack').val(),
+        pjtMainTech : $('#pjtMainTech').val(),
+        pjtRole : $('#pjtRole').val()
+    };
+
+    console.log('pjt 전송하는 값' + pjtForm);
+
+    $.ajax({
+        type: "POST",
+        url: "/pjtSave",
+        dataType: "JSON",
+        async: false,
+        contentType: 'application/json',
+        data: JSON.stringify(pjtForm),
+        success: function(data) {
+            $('#pjtSaveBtn').html("성공");
+            console.log("pjtSaveBtn 성공! uID is " + data);
+        },
+        error: function(error){
+            $('#pjtSaveBtn').html("실패");
+            console.log("error : " + error);
+            alert("error");
+        }
+    });
+}
