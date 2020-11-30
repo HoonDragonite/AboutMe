@@ -20,6 +20,11 @@ function loadEvents(){
     if (pjtSaveBtn){
         pjtSaveBtn.addEventListener('click', sendProject);
     }
+
+    const pjtAddBtn = document.getElementById('pjtAddBtn');
+    if(pjtAddBtn){
+        pjtAddBtn.addEventListener('click', insertPjtTableRow);
+    }
 }
 
 function clickInput(){
@@ -133,4 +138,30 @@ function sendProject(){
             alert("error");
         }
     });
+}
+
+function insertPjtTableRow(){
+    let tr = ""
+    tr += "<tr id=\"pjt-item\">";
+    tr += "    <td class=\"pjt-td\">";
+    tr += "        <span class=\"pjt-seq\" id=\"pjtSeq\" name=\"pjtSeq\"></span>";
+    tr += "        <input class=\"pjt-name\" id=\"pjtName\" name=\"pjtName\" type=\"text\" placeholder=\"프로젝트명\">";
+    tr += "        <input class=\"pjt-team\" id=\"pjtTeam\" name=\"pjtTeam\" type=\"text\" placeholder=\"팀명\">";
+    tr += "        <input class=\"pjt-start-date\" id=\"pjtStartDate\" name=\"pjtStartDate\" type=\"text\" placeholder=\"시작일자\" maxlength=\"6\">";
+    tr += "        <input class=\"pjt-end-date\" id=\"pjtEndDate\" name=\"pjtEndDate\" type=\"text\" placeholder=\"종료일자\" maxlength=\"6\">";
+    tr += "    </td>";
+    tr += "    <td class=\"pjt-td\">";
+    tr += "        <input class=\"pjt-desc\" id=\"pjtDesc\" name=\"pjtDesc\" type=\"text\" placeholder=\"내용\">";
+    tr += "    </td>";
+    tr += "    <td class=\"pjt-td\">";
+    tr += "        <input class=\"pjt-tech-stack\" id=\"pjtTechStack\" name=\"pjtTechStack\" type=\"text\" placeholder=\"기술스택\">";
+    tr += "    </td>";
+    tr += "    <td class=\"pjt-td\">";
+    tr += "        <input class=\"pjt-main-tech\" id=\"pjtMainTech\" name=\"pjtMainTech\" type=\"text\" placeholder=\"주요기술\">";
+    tr += "    </td>";
+    tr += "    <td class=\"pjt-td\">";
+    tr += "        <input class=\"pjt-role\" id=\"pjtRole\" name=\"pjtRole\" type=\"text\" placeholder=\"맡은역할\">";
+    tr += "    </td>";
+    tr += "</tr>";
+    $("#pjtTable").append(tr);
 }
