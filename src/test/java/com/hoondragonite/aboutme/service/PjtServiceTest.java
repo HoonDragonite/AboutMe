@@ -32,11 +32,28 @@ public class PjtServiceTest {
          **/
         pjtRepository.deleteAll();
     }
-    
+
+    @Test
+    public void 사용자프로젝트_행이_0일_때(){
+        // given
+        Long testUID = new Long(1);
+        // when
+        Optional<Project> projectOptional = pjtService.findByuID(testUID);
+        List<Project>projectList = pjtService.findAllByuID(testUID);
+        //then
+        if(projectOptional.isPresent()){
+            System.out.println("projectOptional : 행이 있습니다.");
+        }
+        else{
+            System.out.println("projectOptional : 행이 없습니다.");
+        }
+
+        System.out.println("projectList size: " + projectList.size());
+        System.out.println("projectList isEmpty: " + projectList.isEmpty());
+    }
+
     @Test
     public void 사용자프로젝트_서비스_테스트_단일(){
-        System.out.println("***** 사용자프로젝트_서비스_테스트 시작 *****");
-
         // given
         Long testUID = new Long(1);
         PjtSaveRequestDto dto = PjtSaveRequestDto.builder()
@@ -64,4 +81,43 @@ public class PjtServiceTest {
         }
     }
 
+    @Test
+    public void 사용자_프로젝트_여러개_꺼내오기(){
+        // given
+        Long uID;
+        Long testUID = new Long(1);
+        PjtSaveRequestDto dto = PjtSaveRequestDto.builder()
+                .uID(new Long(1))
+                .pjtName("어바웃미 프로젝트")
+                .pjtTeam("훈나뇽")
+                .pjtStartDate("202001")
+                .pjtEndDate("202001")
+                .pjtDesc("테스트용 내용입니다.")
+                .pjtTechStack("Spring Boot")
+                .pjtMainTech("메인기술")
+                .pjtRole("개발자")
+                .build();
+        pjtService.savePjt(testUID, dto);
+
+        PjtSaveRequestDto dto2 = PjtSaveRequestDto.builder()
+                .uID(new Long(1))
+                .pjtName("어바웃미 프로젝트222")
+                .pjtTeam("훈나뇽")
+                .pjtStartDate("202002")
+                .pjtEndDate("202002")
+                .pjtDesc("테스트용 내용입니다.2222")
+                .pjtTechStack("Spring Boot22")
+                .pjtMainTech("메인기술222")
+                .pjtRole("개발자222")
+                .build();
+        pjtService.savePjt(testUID, dto2);
+
+        // when
+        List<Project> projectList = pjtService.findAllByuID(testUID);
+
+        //then
+        for (int i=0; i< projectList.size(); i++){
+            System.out.println("꺼낸 프로젝트 " + i + "번째 :" + projectList.get(i).getPjtName());
+        }
+    }
 }
