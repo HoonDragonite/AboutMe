@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor
@@ -20,6 +21,11 @@ public class PjtService {
     EntityManager em;
 
     private final PjtRepository pjtRepository;
+
+    @Transactional
+    public List<Project> findAllByuID(Long uID){
+        return  pjtRepository.findAllByuID(uID);
+    }
 
     @Transactional
     public Optional<Project> findByuID(Long uID){
