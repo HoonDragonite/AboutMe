@@ -55,7 +55,6 @@ public class CareerinfoController {
     @RequestMapping("/careermodify")
     public String careermodify(@PathVariable("cno") Long cno)throws Exception{
         System.out.println("careermodify cno > "+cno);
-
         return "careerinfo";
     }
 

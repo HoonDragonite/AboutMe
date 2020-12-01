@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
@@ -49,13 +50,27 @@ public class WebRestController {
         return s3Service.upload(multipartFile, "abtme_profile", uID);
     }
 
-    @PostMapping("/pjtSave")
-    public Long pjtSave(@RequestBody PjtSaveRequestDto dto, HttpSession httpSession){
+    @PostMapping("pjtSave")
+    public void pjtSave(@RequestBody PjtSaveRequestDto dto, HttpSession httpSession){
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
         Long uID = null;
 
         if(user != null) {
-            uID = pjtService.savePjt(user.getUID(), dto);
+            pjtService.savePjt(user.getUID(), dto);
+        }
+    }
+
+    @PostMapping("/pjtListSave")
+    public Long pjtListSave(@RequestBody List<PjtSaveRequestDto> dtoList, HttpSession httpSession){
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        Long uID = null;
+
+        System.out.println("dtoList Checking :" + dtoList.size());
+        System.out.println("dtoList Checking :" + dtoList.get(0).getPjtName());
+        System.out.println("dtoList Checking :" + dtoList.get(1).getPjtName());
+
+        if(user != null) {
+            // uID = pjtService.savePjt(user.getUID(), dto);
         }
 
         return uID;

@@ -18,7 +18,7 @@ function loadEvents(){
 
     const pjtSaveBtn = document.getElementById('pjtSaveBtn');
     if (pjtSaveBtn){
-        pjtSaveBtn.addEventListener('click', sendProject);
+        pjtSaveBtn.addEventListener('click', sendProjectList);
     }
 
     const pjtAddBtn = document.getElementById('pjtAddBtn');
@@ -104,6 +104,52 @@ function sendBaseInfo(){
     });
 }
 
+function sendProjectList(){
+    const pjtTable = document.getElementById('pjtTable');
+    console.log("tr 개수:" + pjtTable.rows.length);
+
+    const pjtArray = new Array();
+
+    $('#pjtTable tr').each(function () {
+        let pjtObject = {
+            pjtSeq : $(this).find('.pjt-seq').val(),
+            pjtName : $(this).find('.pjt-name').val(),
+            pjtTeam : $(this).find('.pjt-team').val(),
+            pjtStartDate : $(this).find('.pjt-start-date').val(),
+            pjtEndDate : $(this).find('.pjt-end-date').val(),
+            pjtDesc : $(this).find('.pjt-desc').val(),
+            pjtTechStack : $(this).find('.pjt-tech-stack').val(),
+            pjtMainTech : $(this).find('.pjt-main-tech').val(),
+            pjtRole : $(this).find('.pjt-role').val()
+        };
+
+        pjtArray.push(pjtObject);
+    })
+
+    const jsonPjtArray = JSON.stringify(pjtArray);
+    console.log("Pjt 전송하는 값 :" + jsonPjtArray);
+
+    $.ajax({
+        type: "POST",
+        url: "/pjtListSave",
+        dataType: "JSON",
+        async: false,
+        contentType: 'application/json',
+        data: jsonPjtArray,
+        success: function(data) {
+            $('#pjtSaveBtn').html("성공");
+            console.log("pjtSaveBtn 성공! uID is " + data);
+        },
+        error: function(error){
+            $('#pjtSaveBtn').html("실패");
+            console.log("error : " + error);
+            alert("error");
+        }
+    });
+}
+
+
+// 단일 값 보내기, 사용X 다른 코드 작성할 때 참고하기
 function sendProject(){
     $('#pjtSaveBtn').html("Loading...");
 
@@ -119,7 +165,7 @@ function sendProject(){
         pjtRole : $('#pjtRole').val()
     };
 
-    console.log('pjt 전송하는 값' + pjtForm);
+    console.log('pjt 전송하는 값' + JSON.stringify(pjtForm));
 
     $.ajax({
         type: "POST",

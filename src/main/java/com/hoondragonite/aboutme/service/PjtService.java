@@ -40,9 +40,9 @@ public class PjtService {
             pjtRepository.save(newEntity);
         }
         else{
-            Optional<Project> finded =pjtRepository.findById(dto.getPjtSeq());
-            if(finded.isPresent()){
-                Project updateEntity = finded.get();
+            Optional<Project> optionalProject =pjtRepository.findById(dto.getPjtSeq());
+            if(optionalProject.isPresent()){
+                Project updateEntity = optionalProject.get();
                 updateEntity.updateProject(dto.getUID(),dto.getPjtName(),dto.getPjtTeam(),dto.getPjtStartDate(),dto.getPjtEndDate(),dto.getPjtDesc(),dto.getPjtTechStack(),dto.getPjtMainTech(),dto.getPjtRole());
                 pjtRepository.save(updateEntity);
             }
