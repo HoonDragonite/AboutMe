@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -80,15 +82,15 @@ public class PjtServiceTest {
             System.out.println("테스트 확인 getPjtName() :" + project.getPjtName());
         }
     }
-    /*
+
     @Test
     public void 사용자프로젝트_서비스_테스트_복수(){
         // given
         Long testUID = new Long(1);
-        List<PjtSaveRequestDto> dtoList;
+        List<PjtSaveRequestDto> dtoList = new ArrayList<>();
 
         PjtSaveRequestDto dto = PjtSaveRequestDto.builder()
-                .uID(new Long(1))
+                .uID(null)
                 .pjtName("어바웃미 프로젝트")
                 .pjtTeam("훈나뇽")
                 .pjtStartDate("202001")
@@ -98,20 +100,33 @@ public class PjtServiceTest {
                 .pjtMainTech("메인기술")
                 .pjtRole("개발자")
                 .build();
-        pjtService.savePjt(testUID, dto);
+
+        PjtSaveRequestDto dto2 = PjtSaveRequestDto.builder()
+                .uID(null)
+                .pjtName("")
+                .pjtTeam("")
+                .pjtStartDate("")
+                .pjtEndDate("")
+                .pjtDesc("")
+                .pjtTechStack("")
+                .pjtMainTech("")
+                .pjtRole("")
+                .build();
+
+        dtoList.add(dto);
+        dtoList.add(dto2);
 
         // when
-        Optional<Project> foundProjectList = pjtService.findByuID(testUID);
+        pjtService.savePjtList(new Long(1), dtoList);
 
         // then
-        if(foundProjectList.isPresent()){
-            Project project =foundProjectList.get();
+        List<Project> projectList = pjtService.findAllByuID(testUID);
 
-            assertThat(project.getPjtName(), is("어바웃미 프로젝트"));
-            System.out.println("테스트 확인 getPjtName() :" + project.getPjtName());
+        for (int i=0; i< projectList.size(); i++){
+            System.out.println("꺼낸 프로젝트 " + i + "번째 :" + projectList.get(i).getPjtName());
         }
     }
-    */
+
     @Test
     public void 사용자_프로젝트_여러개_꺼내오기(){
         // given
