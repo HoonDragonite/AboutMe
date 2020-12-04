@@ -90,8 +90,20 @@ public class PjtServiceTest {
         List<PjtSaveRequestDto> dtoList = new ArrayList<>();
 
         PjtSaveRequestDto dto = PjtSaveRequestDto.builder()
+                .uID(new Long(1))
+                .pjtName("프로젝트1 수정")
+                .pjtTeam("훈나뇽")
+                .pjtStartDate("202001")
+                .pjtEndDate("202001")
+                .pjtDesc("테스트용 내용입니다.")
+                .pjtTechStack("Spring Boot")
+                .pjtMainTech("메인기술")
+                .pjtRole("개발자")
+                .build();
+
+        PjtSaveRequestDto dto1 = PjtSaveRequestDto.builder()
                 .uID(null)
-                .pjtName("어바웃미 프로젝트")
+                .pjtName("프로젝트2 저장")
                 .pjtTeam("훈나뇽")
                 .pjtStartDate("202001")
                 .pjtEndDate("202001")
@@ -114,6 +126,7 @@ public class PjtServiceTest {
                 .build();
 
         dtoList.add(dto);
+        dtoList.add(dto1);
         dtoList.add(dto2);
 
         // when
