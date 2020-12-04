@@ -32,8 +32,28 @@ public class PjtService {
         return pjtRepository.findByuID(uID);
     }
 
+
     @Transactional
     public Long savePjt(Long uID, PjtSaveRequestDto dto){
+        pushPjt(uID, dto);
+        return uID;
+    }
+
+    @Transactional
+    public Long savePjtList(Long uID, List<PjtSaveRequestDto> dtoList){
+        PjtSaveRequestDto dto;
+        for(int i=0; i<dtoList.size(); i++){
+            dto = dtoList.get(i);
+            if(dto.getPjtName().equals("")){
+                continue;
+            }
+            pushPjt(uID, dto);
+        }
+
+        return uID;
+    }
+
+    private void pushPjt(Long uID, PjtSaveRequestDto dto) {
         if(dto.getPjtSeq() == null){
             Project newEntity = dto.toEntity();
             newEntity.setUID(uID);
@@ -47,6 +67,5 @@ public class PjtService {
                 pjtRepository.save(updateEntity);
             }
         }
-        return uID;
     }
 }

@@ -80,7 +80,38 @@ public class PjtServiceTest {
             System.out.println("테스트 확인 getPjtName() :" + project.getPjtName());
         }
     }
+    /*
+    @Test
+    public void 사용자프로젝트_서비스_테스트_복수(){
+        // given
+        Long testUID = new Long(1);
+        List<PjtSaveRequestDto> dtoList;
 
+        PjtSaveRequestDto dto = PjtSaveRequestDto.builder()
+                .uID(new Long(1))
+                .pjtName("어바웃미 프로젝트")
+                .pjtTeam("훈나뇽")
+                .pjtStartDate("202001")
+                .pjtEndDate("202001")
+                .pjtDesc("테스트용 내용입니다.")
+                .pjtTechStack("Spring Boot")
+                .pjtMainTech("메인기술")
+                .pjtRole("개발자")
+                .build();
+        pjtService.savePjt(testUID, dto);
+
+        // when
+        Optional<Project> foundProjectList = pjtService.findByuID(testUID);
+
+        // then
+        if(foundProjectList.isPresent()){
+            Project project =foundProjectList.get();
+
+            assertThat(project.getPjtName(), is("어바웃미 프로젝트"));
+            System.out.println("테스트 확인 getPjtName() :" + project.getPjtName());
+        }
+    }
+    */
     @Test
     public void 사용자_프로젝트_여러개_꺼내오기(){
         // given
