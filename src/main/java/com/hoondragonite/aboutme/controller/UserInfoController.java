@@ -39,14 +39,14 @@ public class UserInfoController {
         }
 
         List<Project> projectList = pjtService.findAllByuID(user.getUID());
+
+
         if(projectList.size() > 0){
             for (int i=0; i< projectList.size(); i++){
-                System.out.println("꺼낸 프로젝트 " + i + "번째 :" + projectList.get(i).getPjtName());
+                System.out.println("꺼낸 프로젝트명" + i + "번째 :" + projectList.get(i).getPjtName());
             }
-
             model.addAttribute(projectList);
         }
-
         return "userinfo";
     }
 }
