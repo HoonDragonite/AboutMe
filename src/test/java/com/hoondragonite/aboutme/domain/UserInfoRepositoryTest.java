@@ -1,5 +1,6 @@
 package com.hoondragonite.aboutme.domain;
 
+import com.hoondragonite.aboutme.domain.user.User;
 import com.hoondragonite.aboutme.domain.userinfo.UserInfo;
 import com.hoondragonite.aboutme.repository.UserInfoRepository;
 import org.junit.After;
@@ -34,21 +35,23 @@ public class UserInfoRepositoryTest {
     @Test
     public void 사용자정보저장_불러오기() {
         //given : 테스트 기반 환경 작성
-        userInfoRepository.save(UserInfo.builder()
+        UserInfo userInfo = UserInfo.builder()
                 .korName("이승훈")
                 .engName("SeungHoon Lee")
                 .email("a@naver.com")
                 .contact("010-1234-1234")
                 .blog("a.com")
                 .selfIntroduce("hello")
-                .build());
+                .build();
+        userInfo.setUID(new Long(1));
+        userInfoRepository.save(userInfo);
 
         //when : 테스트 하고자 하는 행위
         List<UserInfo> userInfoList = userInfoRepository.findAll();
 
         //then : 테스트 결과 검증
-        UserInfo userInfo = userInfoList.get(0);
-        assertThat(userInfo.getKorName(), is("이승훈"));
-        assertThat(userInfo.getEngName(), is("SeungHoon Lee"));
+        UserInfo test = userInfoList.get(0);
+        assertThat(test.getKorName(), is("이승훈"));
+        assertThat(test.getEngName(), is("SeungHoon Lee"));
     }
 }

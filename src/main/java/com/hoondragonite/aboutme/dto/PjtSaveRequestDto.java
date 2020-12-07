@@ -13,7 +13,6 @@ import lombok.Setter;
 public class PjtSaveRequestDto {
 
     private Long pjtSeq;
-    private Long uID;
     private String pjtName;
     private String pjtTeam;
     private String pjtStartDate;
@@ -24,9 +23,8 @@ public class PjtSaveRequestDto {
     private String pjtRole;
 
     @Builder
-    public PjtSaveRequestDto(Long pjtSeq, Long uID, String pjtName, String pjtTeam, String pjtStartDate, String pjtEndDate, String pjtDesc, String pjtTechStack, String pjtMainTech, String pjtRole) {
+    public PjtSaveRequestDto(Long pjtSeq, String pjtName, String pjtTeam, String pjtStartDate, String pjtEndDate, String pjtDesc, String pjtTechStack, String pjtMainTech, String pjtRole) {
         this.pjtSeq = pjtSeq;
-        this.uID = uID;
         this.pjtName = pjtName;
         this.pjtTeam = pjtTeam;
         this.pjtStartDate = pjtStartDate;
@@ -39,7 +37,6 @@ public class PjtSaveRequestDto {
 
     public Project toEntity(){
         return Project.builder()
-                .uID(uID)
                 .pjtName(pjtName)
                 .pjtTeam(pjtTeam)
                 .pjtStartDate(pjtStartDate)

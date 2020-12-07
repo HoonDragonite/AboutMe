@@ -65,8 +65,6 @@ public class WebRestController {
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
         Long uID = null;
 
-        System.out.println("WebRestTest : " + dtoList.size());
-
         if(user != null) {
             uID = pjtService.savePjtList(user.getUID(), dtoList);
         }

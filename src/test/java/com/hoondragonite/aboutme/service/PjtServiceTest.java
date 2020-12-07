@@ -59,7 +59,6 @@ public class PjtServiceTest {
         // given
         Long testUID = new Long(1);
         PjtSaveRequestDto dto = PjtSaveRequestDto.builder()
-                .uID(new Long(1))
                 .pjtName("어바웃미 프로젝트")
                 .pjtTeam("훈나뇽")
                 .pjtStartDate("202001")
@@ -90,7 +89,6 @@ public class PjtServiceTest {
         List<PjtSaveRequestDto> dtoList = new ArrayList<>();
 
         PjtSaveRequestDto dto = PjtSaveRequestDto.builder()
-                .uID(new Long(1))
                 .pjtName("프로젝트1 수정")
                 .pjtTeam("훈나뇽")
                 .pjtStartDate("202001")
@@ -102,7 +100,6 @@ public class PjtServiceTest {
                 .build();
 
         PjtSaveRequestDto dto1 = PjtSaveRequestDto.builder()
-                .uID(null)
                 .pjtName("프로젝트2 저장")
                 .pjtTeam("훈나뇽")
                 .pjtStartDate("202001")
@@ -114,7 +111,6 @@ public class PjtServiceTest {
                 .build();
 
         PjtSaveRequestDto dto2 = PjtSaveRequestDto.builder()
-                .uID(null)
                 .pjtName("")
                 .pjtTeam("")
                 .pjtStartDate("")
@@ -146,7 +142,6 @@ public class PjtServiceTest {
         Long uID;
         Long testUID = new Long(1);
         PjtSaveRequestDto dto = PjtSaveRequestDto.builder()
-                .uID(new Long(1))
                 .pjtName("어바웃미 프로젝트")
                 .pjtTeam("훈나뇽")
                 .pjtStartDate("202001")
@@ -159,7 +154,6 @@ public class PjtServiceTest {
         pjtService.savePjt(testUID, dto);
 
         PjtSaveRequestDto dto2 = PjtSaveRequestDto.builder()
-                .uID(new Long(1))
                 .pjtName("어바웃미 프로젝트222")
                 .pjtTeam("훈나뇽")
                 .pjtStartDate("202002")

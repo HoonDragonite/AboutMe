@@ -85,23 +85,23 @@
                 <table class="pjt-table" id="pjtTable">
                     <tr id="pjt-item" th:each="projectList, i: ${projectList}">
                         <td class="pjt-td">
-                            <span class="pjt-seq" id="pjtSeq" name="pjtSeq" th:text="${projectList.pjtSeq}"></span>
-                            <input class="pjt-name" id="pjtName" name="pjtName" type="text" placeholder="프로젝트명" th:value="${projectList.pjtName}">
-                            <input class="pjt-team" id="pjtTeam" name="pjtTeam" type="text" placeholder="팀명" th:value="${projectList.pjtTeam}">
-                            <input class="pjt-start-date" id="pjtStartDate" name="pjtStartDate" type="text" placeholder="시작일자" maxlength="6" th:value="${projectList.pjtStartDate}">
-                            <input class="pjt-end-date" id="pjtEndDate" name="pjtEndDate" type="text" placeholder="종료일자" maxlength="6" th:value="${projectList.pjtEndDate}">
+                            <input class="pjt-seq" name="pjtSeq" th:value="${projectList.pjtSeq}">
+                            <input class="pjt-name" name="pjtName" type="text" placeholder="프로젝트명" th:value="${projectList.pjtName}">
+                            <input class="pjt-team" name="pjtTeam" type="text" placeholder="팀명" th:value="${projectList.pjtTeam}">
+                            <input class="pjt-start-date" name="pjtStartDate" type="text" placeholder="시작일자" maxlength="6" th:value="${projectList.pjtStartDate}">
+                            <input class="pjt-end-date" name="pjtEndDate" type="text" placeholder="종료일자" maxlength="6" th:value="${projectList.pjtEndDate}">
                         </td>
                         <td class="pjt-td">
-                            <input class="pjt-desc" id="pjtDesc" name="pjtDesc" type="text" placeholder="내용" th:value="${projectList.pjtDesc}">
+                            <input class="pjt-desc" name="pjtDesc" type="text" placeholder="내용" th:value="${projectList.pjtDesc}">
                         </td>
                         <td class="pjt-td">
-                            <input class="pjt-tech-stack" id="pjtTechStack" name="pjtTechStack" type="text" placeholder="기술스택" th:value="${projectList.pjtTechStack}">
+                            <input class="pjt-tech-stack" name="pjtTechStack" type="text" placeholder="기술스택" th:value="${projectList.pjtTechStack}">
                         </td>
                         <td class="pjt-td">
-                            <input class="pjt-main-tech" id="pjtMainTech" name="pjtMainTech" type="text" placeholder="주요기술" th:value="${projectList.pjtMainTech}">
+                            <input class="pjt-main-tech" name="pjtMainTech" type="text" placeholder="주요기술" th:value="${projectList.pjtMainTech}">
                         </td>
                         <td class="pjt-td">
-                            <input class="pjt-role" id="pjtRole" name="pjtRole" type="text" placeholder="맡은역할" th:value="${projectList.pjtRole}">
+                            <input class="pjt-role" name="pjtRole" type="text" placeholder="맡은역할" th:value="${projectList.pjtRole}">
                         </td>
                     </tr>
                 </table>

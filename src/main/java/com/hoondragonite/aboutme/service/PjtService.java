@@ -4,6 +4,7 @@ import com.hoondragonite.aboutme.domain.project.Project;
 import com.hoondragonite.aboutme.dto.PjtSaveRequestDto;
 import com.hoondragonite.aboutme.dto.UserInfoSaveRequestDto;
 import com.hoondragonite.aboutme.repository.PjtRepository;
+import com.sun.org.apache.bcel.internal.generic.RETURN;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
@@ -63,7 +64,9 @@ public class PjtService {
             Optional<Project> optionalProject =pjtRepository.findById(dto.getPjtSeq());
             if(optionalProject.isPresent()){
                 Project updateEntity = optionalProject.get();
-                updateEntity.updateProject(dto.getUID(),dto.getPjtName(),dto.getPjtTeam(),dto.getPjtStartDate(),dto.getPjtEndDate(),dto.getPjtDesc(),dto.getPjtTechStack(),dto.getPjtMainTech(),dto.getPjtRole());
+                System.out.println("updateEntity getUID:" + updateEntity.getUID());
+                updateEntity.updateProject(dto.getPjtName(),dto.getPjtTeam(),dto.getPjtStartDate(),dto.getPjtEndDate(),dto.getPjtDesc(),dto.getPjtTechStack(),dto.getPjtMainTech(),dto.getPjtRole());
+                System.out.println("updateEntity getUID:" + updateEntity.getUID());
                 pjtRepository.save(updateEntity);
             }
         }

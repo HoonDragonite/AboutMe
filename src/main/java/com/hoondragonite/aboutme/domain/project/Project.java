@@ -46,8 +46,7 @@ public class Project extends BaseTimeEntity {
         this.pjtRole = pjtRole;
     }
 
-    public void updateProject(Long uID, String pjtName, String pjtTeam, String pjtStartDate, String pjtEndDate, String pjtDesc, String pjtTechStack, String pjtMainTech, String pjtRole) {
-        this.uID = uID;
+    public void updateProject(String pjtName, String pjtTeam, String pjtStartDate, String pjtEndDate, String pjtDesc, String pjtTechStack, String pjtMainTech, String pjtRole) {
         this.pjtName = pjtName;
         this.pjtTeam = pjtTeam;
         this.pjtStartDate = pjtStartDate;
