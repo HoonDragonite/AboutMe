@@ -47,7 +47,7 @@
             <div class="desc-area" id="baseInfoArea">
                 <h2 class="desc-title">기본정보</h2>
                 <div class="desc-item profile-area">
-                    <img th:src="${userInfo.image}" class="profile-image" id="image">
+                    <img th:src="${userInfo?.image}" class="profile-image" id="image">
                     <span>
                         <input type="file" class="profile-input" id="imageInput">
                         <button class="btn" id="clickInputBtn">불러오기</button>
@@ -55,27 +55,27 @@
                 </div>
                 <div class="desc-item">
                     <span class="item-name">이름(한글)</span>
-                    <input class="item-input" id="korName" name="korName" th:value="${userInfo.korName}">
+                    <input class="item-input" id="korName" name="korName" th:value="${userInfo?.korName}">
                 </div>
                 <div class="desc-item">
                     <span class="item-name">이름(영어)</span>
-                    <input class="item-input" id="engName" name="engName" th:value="${userInfo.engName}">
+                    <input class="item-input" id="engName" name="engName" th:value="${userInfo?.engName}">
                 </div>
                 <div class="desc-item">
                     <span class="item-name">이메일</span>
-                    <input class="item-input" id="email" name="email" th:value="${userInfo.email}">
+                    <input class="item-input" id="email" name="email" th:value="${userInfo?.email}">
                 </div>
                 <div class="desc-item">
                     <span class="item-name">연락처</span>
-                    <input class="item-input" id="contact" name="contact" th:value="${userInfo.contact}">
+                    <input class="item-input" id="contact" name="contact" th:value="${userInfo?.contact}">
                 </div>
                 <div class="desc-item">
                     <span class="item-name">블로그</span>
-                    <input class="item-input" id="blog" name="blog" th:value="${userInfo.blog}">
+                    <input class="item-input" id="blog" name="blog" th:value="${userInfo?.blog}">
                 </div>
                 <div class="desc-item">
                     <div class="item-name">자기소개</div>
-                    <input class="item-input" id="selfIntroduce" name="selfIntroduce" placeholder="최대 300자" th:value="${userInfo.selfIntroduce}">
+                    <input class="item-input" id="selfIntroduce" name="selfIntroduce" placeholder="최대 300자" th:value="${userInfo?.selfIntroduce}">
                 </div>
                 <button class="btn" id="baseInfoBtn">저장</button>
             </div>
@@ -86,7 +86,7 @@
                     <tr id="pjt-item" th:each="projectList, i: ${projectList}">
                         <td class="pjt-td">
                             <input class="pjt-seq" name="pjtSeq" th:value="${projectList.pjtSeq}">
-                            <input class="pjt-name" name="pjtName" type="text" placeholder="프로젝트명" th:value="${projectList.pjtName}">
+                            <input class="pjt-name" name="pjtName" type="text" placeholder="프로젝트명"  th:value="${projectList.pjtName}">
                             <input class="pjt-team" name="pjtTeam" type="text" placeholder="팀명" th:value="${projectList.pjtTeam}">
                             <input class="pjt-start-date" name="pjtStartDate" type="text" placeholder="시작일자" maxlength="6" th:value="${projectList.pjtStartDate}">
                             <input class="pjt-end-date" name="pjtEndDate" type="text" placeholder="종료일자" maxlength="6" th:value="${projectList.pjtEndDate}">
