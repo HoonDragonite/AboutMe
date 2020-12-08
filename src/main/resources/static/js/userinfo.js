@@ -1,4 +1,11 @@
 loadEvents();
+setDefaultImage();
+function setDefaultImage(){
+    let image = document.getElementById("image");
+    if (image.getAttribute("src") === ""){
+        image.setAttribute("src", "/image/empty.png");
+    }
+}
 
 function loadEvents(){
     const baseInfoBtn = document.getElementById('baseInfoBtn');
@@ -150,6 +157,7 @@ function sendProjectList(){
 
 
 // 단일 값 보내기, 사용X 다른 코드 작성할 때 참고하기
+/*
 function sendProject(){
     $('#pjtSaveBtn').html("Loading...");
 
@@ -185,7 +193,7 @@ function sendProject(){
         }
     });
 }
-
+*/
 function insertPjtTableRow(){
     let tr = ""
     tr += "<tr id=\"pjt-item\">";
