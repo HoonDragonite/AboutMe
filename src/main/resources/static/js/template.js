@@ -13,17 +13,17 @@ function loadEvents(){
 
 function setImage(){
     console.log('setImage');
-    var templateImage1 = document.getElementById('templateImage1');
-    var templateImage2 = document.getElementById('templateImage2');
-    var templateImage3 = document.getElementById('templateImage3');
-    var templateImage4 = document.getElementById('templateImage4');
-    var templateImage5 = document.getElementById('templateImage5');
+    const templateImage1 = document.getElementById('templateImage1');
+    const templateImage2 = document.getElementById('templateImage2');
+    const templateImage3 = document.getElementById('templateImage3');
+    const templateImage4 = document.getElementById('templateImage4');
+    const templateImage5 = document.getElementById('templateImage5');
 
-    templateImage1.src = '../Image/test1.png';
-    templateImage2.src = '../Image/test2.png';
-    templateImage3.src = '../Image/test3.png';
-    templateImage4.src = '../Image/test4.png';
-    templateImage5.src = '../Image/test5.png';
+    templateImage1.src = '/image/test1.png';
+    templateImage2.src = '/image/test2.png';
+    templateImage3.src = '/image/test3.png';
+    templateImage4.src = '/image/test4.png';
+    templateImage5.src = '/image/test5.png';
 }
 
 /* 선택 시 이동*/
