@@ -72,6 +72,9 @@
 .pjt-td{
     display: block;
 }
+.pjt-seq{
+    display: none;
+}
 .add-btn{
     display: block;
     width: 200px;
@@ -92,6 +95,13 @@
 .add-btn:hover{
     background: #F5FFFA;
 }
-.pjt-seq{
+.crr-table{
+    border-collapse: separate;
+    border-spacing: 0 50px;
+}
+.crr-td{
+    display: block;
+}
+.crr-seq{
     display: none;
 }

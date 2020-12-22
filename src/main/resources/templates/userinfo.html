@@ -107,6 +107,34 @@
                 <button class="add-btn" id="pjtAddBtn">추가</button>
                 <button class="btn" id="pjtSaveBtn">저장</button>
             </div>
+            <div class="desc-area" id="crrArea">
+                <h2 class="desc-title">경력</h2>
+                <table class="crr-table" id="crrTable">
+                    <tr id="crr-item" th:each="careerList, i: ${careerList}">
+                        <td class="crr-td">
+                            <input class="crr-seq" name="crrSeq" th:value="${careerList.crrSeq}">
+                            <input class="crr-name" name="crrName" type="text" placeholder="경력"  th:value="${careerList.crrName}">
+                            <input class="crr-team" name="crrTeam" type="text" placeholder="팀명" th:value="${careerList.crrTeam}">
+                            <input class="crr-start-date" name="crrStartDate" type="text" placeholder="시작일자" maxlength="6" th:value="${careerList.crrStartDate}">
+                            <input class="crr-end-date" name="crrEndDate" type="text" placeholder="종료일자" maxlength="6" th:value="${careerList.crrEndDate}">
+                        </td>
+                        <td class="crr-td">
+                            <input class="crr-desc" name="crrDesc" type="text" placeholder="내용" th:value="${careerList.crrDesc}">
+                        </td>
+                        <td class="crr-td">
+                            <input class="crr-tech-stack" name="crrTechStack" type="text" placeholder="기술스택" th:value="${careerList.crrTechStack}">
+                        </td>
+                        <td class="crr-td">
+                            <input class="crr-main-tech" name="crrMainTech" type="text" placeholder="주요기술" th:value="${careerList.crrMainTech}">
+                        </td>
+                        <td class="crr-td">
+                            <input class="crr-role" name="crrRole" type="text" placeholder="맡은역할" th:value="${careerList.crrRole}">
+                        </td>
+                    </tr>
+                </table>
+                <button class="add-btn" id="crrAddBtn">추가</button>
+                <button class="btn" id="crrSaveBtn">저장</button>
+            </div>
         </div>
     </section>
     <!-- //section -->

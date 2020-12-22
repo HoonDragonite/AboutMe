@@ -32,6 +32,16 @@ function loadEvents(){
     if(pjtAddBtn){
         pjtAddBtn.addEventListener('click', insertPjtTableRow);
     }
+
+    const crrSaveBtn = document.getElementById('crrSaveBtn');
+    if (crrSaveBtn){
+        crrSaveBtn.addEventListener('click', sendCareerList);
+    }
+
+    const crrAddBtn = document.getElementById('crrAddBtn');
+    if(crrAddBtn){
+        crrAddBtn.addEventListener('click', insertcrrTableRow);
+    }
 }
 
 function clickInput(){
@@ -156,6 +166,102 @@ function sendProjectList(){
 }
 
 
+function insertPjtTableRow(){
+    let tr = ""
+    tr += "<tr id=\"pjt-item\">";
+    tr += "    <td class=\"pjt-td\">";
+    tr += "        <span class=\"pjt-seq\" id=\"pjtSeq\" name=\"pjtSeq\"></span>";
+    tr += "        <input class=\"pjt-name\" id=\"pjtName\" name=\"pjtName\" type=\"text\" placeholder=\"프로젝트명\">";
+    tr += "        <input class=\"pjt-team\" id=\"pjtTeam\" name=\"pjtTeam\" type=\"text\" placeholder=\"팀명\">";
+    tr += "        <input class=\"pjt-start-date\" id=\"pjtStartDate\" name=\"pjtStartDate\" type=\"text\" placeholder=\"시작일자\" maxlength=\"6\">";
+    tr += "        <input class=\"pjt-end-date\" id=\"pjtEndDate\" name=\"pjtEndDate\" type=\"text\" placeholder=\"종료일자\" maxlength=\"6\">";
+    tr += "    </td>";
+    tr += "    <td class=\"pjt-td\">";
+    tr += "        <input class=\"pjt-desc\" id=\"pjtDesc\" name=\"pjtDesc\" type=\"text\" placeholder=\"내용\">";
+    tr += "    </td>";
+    tr += "    <td class=\"pjt-td\">";
+    tr += "        <input class=\"pjt-tech-stack\" id=\"pjtTechStack\" name=\"pjtTechStack\" type=\"text\" placeholder=\"기술스택\">";
+    tr += "    </td>";
+    tr += "    <td class=\"pjt-td\">";
+    tr += "        <input class=\"pjt-main-tech\" id=\"pjtMainTech\" name=\"pjtMainTech\" type=\"text\" placeholder=\"주요기술\">";
+    tr += "    </td>";
+    tr += "    <td class=\"pjt-td\">";
+    tr += "        <input class=\"pjt-role\" id=\"pjtRole\" name=\"pjtRole\" type=\"text\" placeholder=\"맡은역할\">";
+    tr += "    </td>";
+    tr += "</tr>";
+    $("#pjtTable").append(tr);
+}
+
+function sendCareerList(){
+    const crrTable = document.getElementById('crrTable');
+    console.log("tr 개수:" + crrTable.rows.length);
+
+    const crrArray = new Array();
+
+    $('#crrTable tr').each(function () {
+        let crrObject = {
+            crrSeq : $(this).find('.crr-seq').val(),
+            crrName : $(this).find('.crr-name').val(),
+            crrTeam : $(this).find('.crr-team').val(),
+            crrStartDate : $(this).find('.crr-start-date').val(),
+            crrEndDate : $(this).find('.crr-end-date').val(),
+            crrDesc : $(this).find('.crr-desc').val(),
+            crrTechStack : $(this).find('.crr-tech-stack').val(),
+            crrMainTech : $(this).find('.crr-main-tech').val(),
+            crrRole : $(this).find('.crr-role').val()
+        };
+
+        crrArray.push(crrObject);
+    })
+
+    const jsoncrrArray = JSON.stringify(crrArray);
+    console.log("crr 전송하는 값 :" + jsoncrrArray);
+
+    $.ajax({
+        type: "POST",
+        url: "/crrListSave",
+        dataType: "JSON",
+        async: false,
+        contentType: 'application/json',
+        data: jsoncrrArray,
+        success: function(data) {
+            $('#crrSaveBtn').html("성공");
+            console.log("crrSaveBtn 성공! uID is " + data);
+        },
+        error: function(error){
+            $('#crrSaveBtn').html("실패");
+            console.log("error : " + error);
+            alert("error");
+        }
+    });
+}
+
+
+function insertcrrTableRow(){
+    let tr = ""
+    tr += "<tr id=\"crr-item\">";
+    tr += "    <td class=\"crr-td\">";
+    tr += "        <span class=\"crr-seq\" id=\"crrSeq\" name=\"crrSeq\"></span>";
+    tr += "        <input class=\"crr-name\" id=\"crrName\" name=\"crrName\" type=\"text\" placeholder=\"경력\">";
+    tr += "        <input class=\"crr-team\" id=\"crrTeam\" name=\"crrTeam\" type=\"text\" placeholder=\"팀명\">";
+    tr += "        <input class=\"crr-start-date\" id=\"crrStartDate\" name=\"crrStartDate\" type=\"text\" placeholder=\"시작일자\" maxlength=\"6\">";
+    tr += "        <input class=\"crr-end-date\" id=\"crrEndDate\" name=\"crrEndDate\" type=\"text\" placeholder=\"종료일자\" maxlength=\"6\">";
+    tr += "    </td>";
+    tr += "    <td class=\"crr-td\">";
+    tr += "        <input class=\"crr-desc\" id=\"crrDesc\" name=\"crrDesc\" type=\"text\" placeholder=\"내용\">";
+    tr += "    </td>";
+    tr += "    <td class=\"crr-td\">";
+    tr += "        <input class=\"crr-tech-stack\" id=\"crrTechStack\" name=\"crrTechStack\" type=\"text\" placeholder=\"기술스택\">";
+    tr += "    </td>";
+    tr += "    <td class=\"crr-td\">";
+    tr += "        <input class=\"crr-main-tech\" id=\"crrMainTech\" name=\"crrMainTech\" type=\"text\" placeholder=\"주요기술\">";
+    tr += "    </td>";
+    tr += "    <td class=\"crr-td\">";
+    tr += "        <input class=\"crr-role\" id=\"crrRole\" name=\"crrRole\" type=\"text\" placeholder=\"맡은역할\">";
+    tr += "    </td>";
+    tr += "</tr>";
+    $("#crrTable").append(tr);
+}
 // 단일 값 보내기, 사용X 다른 코드 작성할 때 참고하기
 /*
 function sendProject(){
@@ -194,28 +300,3 @@ function sendProject(){
     });
 }
 */
-function insertPjtTableRow(){
-    let tr = ""
-    tr += "<tr id=\"pjt-item\">";
-    tr += "    <td class=\"pjt-td\">";
-    tr += "        <span class=\"pjt-seq\" id=\"pjtSeq\" name=\"pjtSeq\"></span>";
-    tr += "        <input class=\"pjt-name\" id=\"pjtName\" name=\"pjtName\" type=\"text\" placeholder=\"프로젝트명\">";
-    tr += "        <input class=\"pjt-team\" id=\"pjtTeam\" name=\"pjtTeam\" type=\"text\" placeholder=\"팀명\">";
-    tr += "        <input class=\"pjt-start-date\" id=\"pjtStartDate\" name=\"pjtStartDate\" type=\"text\" placeholder=\"시작일자\" maxlength=\"6\">";
-    tr += "        <input class=\"pjt-end-date\" id=\"pjtEndDate\" name=\"pjtEndDate\" type=\"text\" placeholder=\"종료일자\" maxlength=\"6\">";
-    tr += "    </td>";
-    tr += "    <td class=\"pjt-td\">";
-    tr += "        <input class=\"pjt-desc\" id=\"pjtDesc\" name=\"pjtDesc\" type=\"text\" placeholder=\"내용\">";
-    tr += "    </td>";
-    tr += "    <td class=\"pjt-td\">";
-    tr += "        <input class=\"pjt-tech-stack\" id=\"pjtTechStack\" name=\"pjtTechStack\" type=\"text\" placeholder=\"기술스택\">";
-    tr += "    </td>";
-    tr += "    <td class=\"pjt-td\">";
-    tr += "        <input class=\"pjt-main-tech\" id=\"pjtMainTech\" name=\"pjtMainTech\" type=\"text\" placeholder=\"주요기술\">";
-    tr += "    </td>";
-    tr += "    <td class=\"pjt-td\">";
-    tr += "        <input class=\"pjt-role\" id=\"pjtRole\" name=\"pjtRole\" type=\"text\" placeholder=\"맡은역할\">";
-    tr += "    </td>";
-    tr += "</tr>";
-    $("#pjtTable").append(tr);
-}
