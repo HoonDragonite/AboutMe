@@ -33,14 +33,14 @@ function loadEvents(){
         pjtAddBtn.addEventListener('click', insertPjtTableRow);
     }
 
-    const crrSaveBtn = document.getElementById('crrSaveBtn');
-    if (crrSaveBtn){
-        crrSaveBtn.addEventListener('click', sendCareerList);
+    const careerSaveBtn = document.getElementById('careerSaveBtn');
+    if (careerSaveBtn){
+        careerSaveBtn.addEventListener('click', sendCareerList);
     }
 
-    const crrAddBtn = document.getElementById('crrAddBtn');
-    if(crrAddBtn){
-        crrAddBtn.addEventListener('click', insertcrrTableRow);
+    const careerAddBtn = document.getElementById('careerAddBtn');
+    if(careerAddBtn){
+        careerAddBtn.addEventListener('click', insertCareerTableRow);
     }
 }
 
@@ -193,43 +193,43 @@ function insertPjtTableRow(){
 }
 
 function sendCareerList(){
-    const crrTable = document.getElementById('crrTable');
-    console.log("tr 개수:" + crrTable.rows.length);
+    const careerTable = document.getElementById('careerTable');
+    console.log("tr 개수:" + careerTable.rows.length);
 
-    const crrArray = new Array();
+    const careerArray = new Array();
 
-    $('#crrTable tr').each(function () {
-        let crrObject = {
-            crrSeq : $(this).find('.crr-seq').val(),
-            crrName : $(this).find('.crr-name').val(),
-            crrTeam : $(this).find('.crr-team').val(),
-            crrStartDate : $(this).find('.crr-start-date').val(),
-            crrEndDate : $(this).find('.crr-end-date').val(),
-            crrDesc : $(this).find('.crr-desc').val(),
-            crrTechStack : $(this).find('.crr-tech-stack').val(),
-            crrMainTech : $(this).find('.crr-main-tech').val(),
-            crrRole : $(this).find('.crr-role').val()
+    $('#careerTable tr').each(function () {
+        let careerObject = {
+            careerSeq : $(this).find('.career-seq').val(),
+            careerName : $(this).find('.career-name').val(),
+            careerTeam : $(this).find('.career-team').val(),
+            careerStartDate : $(this).find('.career-start-date').val(),
+            careerEndDate : $(this).find('.career-end-date').val(),
+            careerDesc : $(this).find('.career-desc').val(),
+            careerTechStack : $(this).find('.career-tech-stack').val(),
+            careerMainTech : $(this).find('.career-main-tech').val(),
+            careerRole : $(this).find('.career-role').val()
         };
 
-        crrArray.push(crrObject);
+        careerArray.push(careerObject);
     })
 
-    const jsoncrrArray = JSON.stringify(crrArray);
-    console.log("crr 전송하는 값 :" + jsoncrrArray);
+    const jsonCareerArray = JSON.stringify(careerArray);
+    console.log("career 전송하는 값 :" + jsonCareerArray);
 
     $.ajax({
         type: "POST",
-        url: "/crrListSave",
+        url: "/careerListSave",
         dataType: "JSON",
         async: false,
         contentType: 'application/json',
-        data: jsoncrrArray,
+        data: jsonCareerArray,
         success: function(data) {
-            $('#crrSaveBtn').html("성공");
-            console.log("crrSaveBtn 성공! uID is " + data);
+            $('#careerSaveBtn').html("성공");
+            console.log("careerSaveBtn 성공! uID is " + data);
         },
         error: function(error){
-            $('#crrSaveBtn').html("실패");
+            $('#careerSaveBtn').html("실패");
             console.log("error : " + error);
             alert("error");
         }
@@ -237,31 +237,32 @@ function sendCareerList(){
 }
 
 
-function insertcrrTableRow(){
+function insertCareerTableRow(){
     let tr = ""
-    tr += "<tr id=\"crr-item\">";
-    tr += "    <td class=\"crr-td\">";
-    tr += "        <span class=\"crr-seq\" id=\"crrSeq\" name=\"crrSeq\"></span>";
-    tr += "        <input class=\"crr-name\" id=\"crrName\" name=\"crrName\" type=\"text\" placeholder=\"경력\">";
-    tr += "        <input class=\"crr-team\" id=\"crrTeam\" name=\"crrTeam\" type=\"text\" placeholder=\"팀명\">";
-    tr += "        <input class=\"crr-start-date\" id=\"crrStartDate\" name=\"crrStartDate\" type=\"text\" placeholder=\"시작일자\" maxlength=\"6\">";
-    tr += "        <input class=\"crr-end-date\" id=\"crrEndDate\" name=\"crrEndDate\" type=\"text\" placeholder=\"종료일자\" maxlength=\"6\">";
+    tr += "<tr id=\"career-item\">";
+    tr += "    <td class=\"career-td\">";
+    tr += "        <span class=\"career-seq\" id=\"careerSeq\" name=\"careerSeq\"></span>";
+    tr += "        <input class=\"career-name\" id=\"careerName\" name=\"careerName\" type=\"text\" placeholder=\"경력\">";
+    tr += "        <input class=\"career-team\" id=\"careerTeam\" name=\"careerTeam\" type=\"text\" placeholder=\"팀명\">";
+    tr += "        <input class=\"career-start-date\" id=\"careerStartDate\" name=\"careerStartDate\" type=\"text\" placeholder=\"시작일자\" maxlength=\"6\">";
+    tr += "        <input class=\"career-end-date\" id=\"careerEndDate\" name=\"careerEndDate\" type=\"text\" placeholder=\"종료일자\" maxlength=\"6\">";
     tr += "    </td>";
-    tr += "    <td class=\"crr-td\">";
-    tr += "        <input class=\"crr-desc\" id=\"crrDesc\" name=\"crrDesc\" type=\"text\" placeholder=\"내용\">";
+    tr += "    <td class=\"career-td\">";
+    tr += "        <input class=\"career-desc\" id=\"careerDesc\" name=\"careerDesc\" type=\"text\" placeholder=\"내용\">";
     tr += "    </td>";
-    tr += "    <td class=\"crr-td\">";
-    tr += "        <input class=\"crr-tech-stack\" id=\"crrTechStack\" name=\"crrTechStack\" type=\"text\" placeholder=\"기술스택\">";
+    tr += "    <td class=\"career-td\">";
+    tr += "        <input class=\"career-tech-stack\" id=\"careerTechStack\" name=\"careerTechStack\" type=\"text\" placeholder=\"기술스택\">";
     tr += "    </td>";
-    tr += "    <td class=\"crr-td\">";
-    tr += "        <input class=\"crr-main-tech\" id=\"crrMainTech\" name=\"crrMainTech\" type=\"text\" placeholder=\"주요기술\">";
+    tr += "    <td class=\"career-td\">";
+    tr += "        <input class=\"career-main-tech\" id=\"careerMainTech\" name=\"careerMainTech\" type=\"text\" placeholder=\"주요기술\">";
     tr += "    </td>";
-    tr += "    <td class=\"crr-td\">";
-    tr += "        <input class=\"crr-role\" id=\"crrRole\" name=\"crrRole\" type=\"text\" placeholder=\"맡은역할\">";
+    tr += "    <td class=\"career-td\">";
+    tr += "        <input class=\"career-role\" id=\"careerRole\" name=\"careerRole\" type=\"text\" placeholder=\"맡은역할\">";
     tr += "    </td>";
     tr += "</tr>";
-    $("#crrTable").append(tr);
+    $("#careerTable").append(tr);
 }
+
 // 단일 값 보내기, 사용X 다른 코드 작성할 때 참고하기
 /*
 function sendProject(){

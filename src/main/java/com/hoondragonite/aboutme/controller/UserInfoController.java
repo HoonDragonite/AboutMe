@@ -1,8 +1,10 @@
 package com.hoondragonite.aboutme.controller;
 
 import com.hoondragonite.aboutme.config.auth.dto.SessionUser;
+import com.hoondragonite.aboutme.domain.career.Career;
 import com.hoondragonite.aboutme.domain.project.Project;
 import com.hoondragonite.aboutme.domain.userinfo.UserInfo;
+import com.hoondragonite.aboutme.service.CareerService;
 import com.hoondragonite.aboutme.service.PjtService;
 import com.hoondragonite.aboutme.service.UserInfoService;
 import lombok.AllArgsConstructor;
@@ -22,7 +24,7 @@ import java.util.Optional;
 public class UserInfoController {
     private UserInfoService userInfoService;
     private PjtService pjtService;
-
+    private CareerService careerService;
     @RequestMapping(value="/userinfo")
     public String userInfo(Model model, HttpSession httpSession){
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
@@ -40,12 +42,14 @@ public class UserInfoController {
 
         List<Project> projectList = pjtService.findAllByuID(user.getUID());
 
-
         if(projectList.size() > 0){
-            for (int i=0; i< projectList.size(); i++){
-                System.out.println("꺼낸 프로젝트명" + i + "번째 :" + projectList.get(i).getPjtName());
-            }
             model.addAttribute(projectList);
+        }
+
+        List<Career> careerList = careerService.findAllByuID(user.getUID());
+
+        if(careerList.size() > 0){
+            model.addAttribute(careerList);
         }
         return "userinfo";
     }

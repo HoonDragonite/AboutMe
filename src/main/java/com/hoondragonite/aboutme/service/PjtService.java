@@ -33,7 +33,7 @@ public class PjtService {
         return pjtRepository.findByuID(uID);
     }
 
-
+    //Test에서 사용
     @Transactional
     public Long savePjt(Long uID, PjtSaveRequestDto dto){
         pushPjt(uID, dto);

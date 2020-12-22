@@ -1,8 +1,10 @@
 package com.hoondragonite.aboutme.controller;
 
 import com.hoondragonite.aboutme.config.auth.dto.SessionUser;
+import com.hoondragonite.aboutme.dto.CareerSaveRequestDto;
 import com.hoondragonite.aboutme.dto.PjtSaveRequestDto;
 import com.hoondragonite.aboutme.dto.UserInfoSaveRequestDto;
+import com.hoondragonite.aboutme.service.CareerService;
 import com.hoondragonite.aboutme.service.PjtService;
 import com.hoondragonite.aboutme.service.UserInfoService;
 // import com.hoondragonite.aboutme.util.S3Uploader;
@@ -22,6 +24,7 @@ public class WebRestController {
     private S3Service s3Service;
     private UserInfoService userInfoService;
     private PjtService pjtService;
+    private CareerService careerService;
 
     @PostMapping("/baseInfoSave")
     public Long saveUserInfo(@RequestBody UserInfoSaveRequestDto dto, HttpSession httpSession){
@@ -49,7 +52,7 @@ public class WebRestController {
 
         return s3Service.upload(multipartFile, "abtme_profile", uID);
     }
-
+    /*
     @PostMapping("pjtSave")
     public void pjtSave(@RequestBody PjtSaveRequestDto dto, HttpSession httpSession){
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
@@ -59,7 +62,7 @@ public class WebRestController {
             pjtService.savePjt(user.getUID(), dto);
         }
     }
-
+    */
     @PostMapping("/pjtListSave")
     public Long pjtListSave(@RequestBody List<PjtSaveRequestDto> dtoList, HttpSession httpSession){
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
@@ -67,6 +70,18 @@ public class WebRestController {
 
         if(user != null) {
             uID = pjtService.savePjtList(user.getUID(), dtoList);
+        }
+
+        return uID;
+    }
+
+    @PostMapping("/careerListSave")
+    public Long careerListSave(@RequestBody List<CareerSaveRequestDto> dtoList, HttpSession httpSession){
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        Long uID = null;
+
+        if(user != null) {
+            uID = careerService.saveCareerList(user.getUID(), dtoList);
         }
 
         return uID;

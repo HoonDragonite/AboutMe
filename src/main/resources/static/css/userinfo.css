@@ -95,13 +95,13 @@
 .add-btn:hover{
     background: #F5FFFA;
 }
-.crr-table{
+.career-table{
     border-collapse: separate;
     border-spacing: 0 50px;
 }
-.crr-td{
+.career-td{
     display: block;
 }
-.crr-seq{
+.career-seq{
     display: none;
 }
