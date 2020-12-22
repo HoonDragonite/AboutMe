@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface CareerRepository extends JpaRepository<Career, Long> {
     Optional<Career> findByuID(Long uID);
     List<Career> findAllByuID(Long uID);
+    void deleteByCareerSeq(Long uID);
 }

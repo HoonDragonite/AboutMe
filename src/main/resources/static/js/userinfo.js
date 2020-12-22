@@ -42,6 +42,11 @@ function loadEvents(){
     if(careerAddBtn){
         careerAddBtn.addEventListener('click', insertCareerTableRow);
     }
+
+    const careerDeleteBtn = document.getElementById('careerDeleteBtn');
+    if(careerDeleteBtn){
+        careerDeleteBtn.addEventListener('click', deleteCareer);
+    }
 }
 
 function clickInput(){
@@ -246,6 +251,7 @@ function insertCareerTableRow(){
     tr += "        <input class=\"career-team\" id=\"careerTeam\" name=\"careerTeam\" type=\"text\" placeholder=\"팀명\">";
     tr += "        <input class=\"career-start-date\" id=\"careerStartDate\" name=\"careerStartDate\" type=\"text\" placeholder=\"시작일자\" maxlength=\"6\">";
     tr += "        <input class=\"career-end-date\" id=\"careerEndDate\" name=\"careerEndDate\" type=\"text\" placeholder=\"종료일자\" maxlength=\"6\">";
+    tr += "        <button class=\"career-delete-btn\" id=\"careerDeleteBtn\">X</button>";
     tr += "    </td>";
     tr += "    <td class=\"career-td\">";
     tr += "        <input class=\"career-desc\" id=\"careerDesc\" name=\"careerDesc\" type=\"text\" placeholder=\"내용\">";
@@ -261,6 +267,28 @@ function insertCareerTableRow(){
     tr += "    </td>";
     tr += "</tr>";
     $("#careerTable").append(tr);
+}
+
+function deleteCareer(){
+
+    console.log('hi' + $(this).parent().find('.career-seq').val());
+    /*
+    const jsonCareerArray = JSON.stringify(careerArray);
+    console.log(jsonCareerArray);
+    $.ajax({
+        type: "POST",
+        url: "/careerDelete",
+        dataType: "JSON",
+        async: false,
+        contentType: 'application/json',
+        data: jsonCareerArray,
+        success: function(data) {
+        },
+        error: function(error){
+            alert("error");
+        }
+    });
+    */
 }
 
 // 단일 값 보내기, 사용X 다른 코드 작성할 때 참고하기

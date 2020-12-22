@@ -86,4 +86,10 @@ public class WebRestController {
 
         return uID;
     }
+
+    @PostMapping("/careerDelete")
+    public void careerDelete(@RequestBody CareerSaveRequestDto dto){
+        System.out.println("컨틀롤러 : "+ dto.getCareerSeq());
+        careerService.deleteCareer(dto);
+    }
 }

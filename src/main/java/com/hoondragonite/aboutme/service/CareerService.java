@@ -71,4 +71,10 @@ public class CareerService {
             }
         }
     }
+
+    @Transactional
+    public void deleteCareer(CareerSaveRequestDto dto){
+        System.out.println("서비스 : "+ dto.getCareerSeq());
+        careerRepository.deleteByCareerSeq(dto.getCareerSeq());
+    }
 }
