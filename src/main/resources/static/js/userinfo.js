@@ -43,9 +43,10 @@ function loadEvents(){
         careerAddBtn.addEventListener('click', insertCareerTableRow);
     }
 
-    const careerDeleteBtn = document.getElementById('careerDeleteBtn');
-    if(careerDeleteBtn){
-        careerDeleteBtn.addEventListener('click', deleteCareer);
+    const careerDeleteBtns = document.getElementsByClassName('career-delete-btn');
+
+    for(let i=0; i< careerDeleteBtns.length; i++){
+        careerDeleteBtns[i].addEventListener('click', deleteCareer);
     }
 }
 
@@ -175,23 +176,23 @@ function insertPjtTableRow(){
     let tr = ""
     tr += "<tr id=\"pjt-item\">";
     tr += "    <td class=\"pjt-td\">";
-    tr += "        <span class=\"pjt-seq\" id=\"pjtSeq\" name=\"pjtSeq\"></span>";
-    tr += "        <input class=\"pjt-name\" id=\"pjtName\" name=\"pjtName\" type=\"text\" placeholder=\"프로젝트명\">";
-    tr += "        <input class=\"pjt-team\" id=\"pjtTeam\" name=\"pjtTeam\" type=\"text\" placeholder=\"팀명\">";
-    tr += "        <input class=\"pjt-start-date\" id=\"pjtStartDate\" name=\"pjtStartDate\" type=\"text\" placeholder=\"시작일자\" maxlength=\"6\">";
-    tr += "        <input class=\"pjt-end-date\" id=\"pjtEndDate\" name=\"pjtEndDate\" type=\"text\" placeholder=\"종료일자\" maxlength=\"6\">";
+    tr += "        <span class=\"pjt-seq\" name=\"pjtSeq\"></span>";
+    tr += "        <input class=\"pjt-name\" name=\"pjtName\" type=\"text\" placeholder=\"프로젝트명\">";
+    tr += "        <input class=\"pjt-team\" name=\"pjtTeam\" type=\"text\" placeholder=\"팀명\">";
+    tr += "        <input class=\"pjt-start-date\" name=\"pjtStartDate\" type=\"text\" placeholder=\"시작일자\" maxlength=\"6\">";
+    tr += "        <input class=\"pjt-end-date\" name=\"pjtEndDate\" type=\"text\" placeholder=\"종료일자\" maxlength=\"6\">";
     tr += "    </td>";
     tr += "    <td class=\"pjt-td\">";
-    tr += "        <input class=\"pjt-desc\" id=\"pjtDesc\" name=\"pjtDesc\" type=\"text\" placeholder=\"내용\">";
+    tr += "        <input class=\"pjt-desc\" name=\"pjtDesc\" type=\"text\" placeholder=\"내용\">";
     tr += "    </td>";
     tr += "    <td class=\"pjt-td\">";
-    tr += "        <input class=\"pjt-tech-stack\" id=\"pjtTechStack\" name=\"pjtTechStack\" type=\"text\" placeholder=\"기술스택\">";
+    tr += "        <input class=\"pjt-tech-stack\" name=\"pjtTechStack\" type=\"text\" placeholder=\"기술스택\">";
     tr += "    </td>";
     tr += "    <td class=\"pjt-td\">";
-    tr += "        <input class=\"pjt-main-tech\" id=\"pjtMainTech\" name=\"pjtMainTech\" type=\"text\" placeholder=\"주요기술\">";
+    tr += "        <input class=\"pjt-main-tech\" name=\"pjtMainTech\" type=\"text\" placeholder=\"주요기술\">";
     tr += "    </td>";
     tr += "    <td class=\"pjt-td\">";
-    tr += "        <input class=\"pjt-role\" id=\"pjtRole\" name=\"pjtRole\" type=\"text\" placeholder=\"맡은역할\">";
+    tr += "        <input class=\"pjt-role\" name=\"pjtRole\" type=\"text\" placeholder=\"맡은역할\">";
     tr += "    </td>";
     tr += "</tr>";
     $("#pjtTable").append(tr);
@@ -246,11 +247,11 @@ function insertCareerTableRow(){
     let tr = ""
     tr += "<tr id=\"career-item\">";
     tr += "    <td class=\"career-td\">";
-    tr += "        <span class=\"career-seq\" id=\"careerSeq\" name=\"careerSeq\"></span>";
-    tr += "        <input class=\"career-name\" id=\"careerName\" name=\"careerName\" type=\"text\" placeholder=\"경력\">";
-    tr += "        <input class=\"career-team\" id=\"careerTeam\" name=\"careerTeam\" type=\"text\" placeholder=\"팀명\">";
-    tr += "        <input class=\"career-start-date\" id=\"careerStartDate\" name=\"careerStartDate\" type=\"text\" placeholder=\"시작일자\" maxlength=\"6\">";
-    tr += "        <input class=\"career-end-date\" id=\"careerEndDate\" name=\"careerEndDate\" type=\"text\" placeholder=\"종료일자\" maxlength=\"6\">";
+    tr += "        <span class=\"career-seq\" name=\"careerSeq\"></span>";
+    tr += "        <input class=\"career-name\" name=\"careerName\" type=\"text\" placeholder=\"경력\">";
+    tr += "        <input class=\"career-team\" name=\"careerTeam\" type=\"text\" placeholder=\"팀명\">";
+    tr += "        <input class=\"career-start-date\" name=\"careerStartDate\" type=\"text\" placeholder=\"시작일자\" maxlength=\"6\">";
+    tr += "        <input class=\"career-end-date\" name=\"careerEndDate\" type=\"text\" placeholder=\"종료일자\" maxlength=\"6\">";
     tr += "        <button class=\"career-delete-btn\" id=\"careerDeleteBtn\">X</button>";
     tr += "    </td>";
     tr += "    <td class=\"career-td\">";
@@ -270,10 +271,13 @@ function insertCareerTableRow(){
 }
 
 function deleteCareer(){
+    console.log($(this).siblings('.career-seq').val());
 
-    console.log('hi' + $(this).parent().find('.career-seq').val());
-    /*
-    const jsonCareerArray = JSON.stringify(careerArray);
+    let careerObject = {
+        careerSeq : $(this).siblings('.career-seq').val()
+    }
+
+    const jsonCareerArray = JSON.stringify(careerObject);
     console.log(jsonCareerArray);
     $.ajax({
         type: "POST",
@@ -288,7 +292,7 @@ function deleteCareer(){
             alert("error");
         }
     });
-    */
+
 }
 
 // 단일 값 보내기, 사용X 다른 코드 작성할 때 참고하기
