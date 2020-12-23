@@ -278,7 +278,7 @@ function deleteCareer(){
     }
 
     const jsonCareerArray = JSON.stringify(careerObject);
-    console.log(jsonCareerArray);
+
     $.ajax({
         type: "POST",
         url: "/careerDelete",
@@ -286,13 +286,15 @@ function deleteCareer(){
         async: false,
         contentType: 'application/json',
         data: jsonCareerArray,
+        context:this,
         success: function(data) {
+            console.log("receive data : " + data);
+            $(this).parent().parent().remove();
         },
         error: function(error){
             alert("error");
         }
     });
-
 }
 
 // 단일 값 보내기, 사용X 다른 코드 작성할 때 참고하기

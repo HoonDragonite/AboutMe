@@ -64,9 +64,7 @@ public class CareerService {
             Optional<Career> optionalCareer =careerRepository.findById(dto.getCareerSeq());
             if(optionalCareer.isPresent()){
                 Career updateEntity = optionalCareer.get();
-                System.out.println("updateEntity getUID:" + updateEntity.getUID());
                 updateEntity.updateCareer(dto.getCareerName(),dto.getCareerTeam(),dto.getCareerStartDate(),dto.getCareerEndDate(),dto.getCareerDesc(),dto.getCareerTechStack(),dto.getCareerMainTech(),dto.getCareerRole());
-                System.out.println("updateEntity getUID:" + updateEntity.getUID());
                 careerRepository.save(updateEntity);
             }
         }
@@ -74,7 +72,6 @@ public class CareerService {
 
     @Transactional
     public void deleteCareer(CareerSaveRequestDto dto){
-        System.out.println("서비스 : "+ dto.getCareerSeq());
         careerRepository.deleteByCareerSeq(dto.getCareerSeq());
     }
 }
