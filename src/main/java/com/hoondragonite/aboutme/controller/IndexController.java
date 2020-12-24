@@ -29,11 +29,9 @@ public class IndexController {
             System.out.println("index Picture" + user.getPicture());
             model.addAttribute("userName", user.getName());
         }
+
         return "index";
     }
-
-    @RequestMapping(value = "/template")
-    public String moveToSelect(ModelAndView modelAndView){ return "template";}
 
     @RequestMapping(value = "/privacy")
     public String privacy(Model model){ return "privacy"; }

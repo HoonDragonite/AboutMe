@@ -9,11 +9,5 @@ function loadEvents(){
         });
     }
 
-    const loginBtn = document.getElementById('loginBtn');
-    if(loginBtn){
-        loginBtn.addEventListener('click', function () {
-            console.log("Move To Login");
-            location.href = "./login";
-        });
-    }
+
 }

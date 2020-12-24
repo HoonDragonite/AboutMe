@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class template extends BaseTimeEntity {
+public class Template extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long templateSeq;
@@ -19,4 +19,6 @@ public class template extends BaseTimeEntity {
     private String templateDesc;
     @Column(length = 100)
     private String templateImage;
+    @Column(length = 50)
+    private String templateHref;
 }
