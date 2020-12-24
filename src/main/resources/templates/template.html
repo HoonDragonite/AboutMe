@@ -41,9 +41,11 @@
                     <h2 class="subtitle">예쁜 포트폴리오가 만들어집니다.</h2>    
                 </div>
                 <div class="template-area">
-                    <div class="template-item" id="templateItem" th:each="templateList, i: ${templateList}">
-                        <img class="template-image" id="templateImage" name="templateImage" src="" href=""/>
-                        <span class="template-title">기본 이력서</span>
+                    <div class="template-item" th:each="templateList, i: ${templateList}">
+                        <a th:href="@{${templateList.templateHref}}">
+                            <img class="template-image" th:src="${templateList.templateImage}"/>
+                        </a>
+                        <div class="template-title" th:text="${templateList.templateName}"></div>
                     </div>
                 </div>
             </div>
