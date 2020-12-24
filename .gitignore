@@ -40,3 +40,6 @@ GoogleService-Info.plist
 ## oAuth ## 나중에 꼭 다시 추가할 것
 application.properties
 application-oauth.properties
+
+# 서버 실행중인 pid, Local이랑 달라서 충돌남
+spring-boot-app.pid
