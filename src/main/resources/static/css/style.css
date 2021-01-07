@@ -94,7 +94,7 @@ table {
 .nav{
     height: 6vh;
     display: flex;
-    flex-direction: row nowrap;
+    flex-flow: row nowrap;
     justify-content: flex-end;
     align-items: center;
     font-size:2vh;
