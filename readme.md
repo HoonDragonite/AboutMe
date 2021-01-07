@@ -23,8 +23,8 @@
 Front-End :HTML, CSS, JS  
 Back-End : Java  
 Framework : Spring Boot 2.3.4  
-DB : AWS RDS Maria DB  
-호스팅 : AWS EC2 Free Tier  
+DB : AWS RDS - Maria DB  
+호스팅 : AWS EC2
 
 [선택 시 비교 대상]  
 
@@ -36,9 +36,11 @@ SQL(엄격한 스키마 준수) vs NoSQL(느슨한 스키마)
 
 ---
 
-### 추가 개발 사항
+### 추가 개발사항
 
-#### 생성한 포트폴리오에서 직접 편집하기
+#### 생성한 포트폴리오 제공
+
+#### 레이아웃 편집기능
 - 배경색상  
 - 레이아웃 수정  
 - 항목 수정  
@@ -50,5 +52,7 @@ SQL(엄격한 스키마 준수) vs NoSQL(느슨한 스키마)
 #### 반응형 레이아웃
 
 #### 포트폴리오 홈페이지 제공
+
+#### 포트폴리오 양식 공유 커뮤니티
 
 ---
