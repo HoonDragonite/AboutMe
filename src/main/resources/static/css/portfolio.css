@@ -8,6 +8,12 @@
     margin: 0 auto;
     background: #ffffff;
 }
+.sub-page{
+    border: 1px solid #000;
+    width: 18cm;
+    height: 27cm;
+    margin: 0 auto;
+}
 .upper-area{
     display: flex;
     flex-flow: row nowrap;

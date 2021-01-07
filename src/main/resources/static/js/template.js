@@ -1,7 +1,0 @@
-
-loadEvents();
-
-function loadEvents(){
-
-}
-
