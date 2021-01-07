@@ -7,23 +7,29 @@
 사용자는 사전에 포트폴리오에 보여줄 정보를 입력한다. 만들고 싶은 포트폴리오를 선택하면 기입력한 정보를 기반으로 포트폴리오가 생성된다.  
 생성한 포트폴리오는 PDF 형식으로 저장할 수 있다.
 
+## 프로젝트 목표
+
+1. Spring Boot 공부
+2. AWS 공부(EC2 배포, RDS 구축)
+3. 실서비스(기능 부족함)
+4. 버전관리 공부(Github Branch에 대해 익힘)
+
 ---
 
 ### 포함한 기능
 
 - 구글 소셜 로그인
 - 사용자 정보 관리
-- 포트폴리오 생성(양식을 선택받고 정보를 기입해줌)
-- 포트폴리오 PDF 저장
-
+- (미완) 포트폴리오 생성
+- (미완) 포트폴리오 PDF 저장
 ---
 
 ### Tech Stack
 
-Front-End :HTML, CSS, JS  
+Front-End :HTML, CSS, JS (Template Engine : Thymeleaf)  
 Back-End : Java  
 Framework : Spring Boot 2.3.4  
-DB : AWS RDS - Maria DB  
+DB : Maria DB(AWS RDS)  
 호스팅 : AWS EC2
 
 [선택 시 비교 대상]  
